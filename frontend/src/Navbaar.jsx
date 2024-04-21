@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Navbaar = () => {
     return (
       <>
@@ -9,7 +10,7 @@ const Navbaar = () => {
         </div>
         <div className="flex gap-20">
           <p>Profile</p>
-          <p>Log Out : </p>
+          <p><Link to = "/SignUp">SingUp </Link> </p>
           <p>Log In</p>
         </div>
       </div>

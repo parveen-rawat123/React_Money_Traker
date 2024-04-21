@@ -2,6 +2,7 @@
 import './App.css'
 import HomePage from './HomePage'
 import DashBord from './DashBord'
+import SignUp from './SignUp';
 import {BrowserRouter,Route, Routes,} from "react-router-dom";
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
       <Route  
       path='/Dashbord' 
       element = {<DashBord/>}
+      />
+       <Route  
+      path='/SignUp' 
+      element = {<SignUp/>}
       />
     </Routes>
     </BrowserRouter>

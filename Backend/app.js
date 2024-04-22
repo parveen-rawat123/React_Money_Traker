@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 app.post('/demo',(req,res)=>{
    console.log(req.body)
    res.send(req.body)
+   
 })
 
 app.listen(port, () => {

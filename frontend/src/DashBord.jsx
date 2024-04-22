@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Months from "./Data";
+import Months from "./data/Data";
+import { Link } from "react-router-dom";
 const DashBord = () => {
     let [Days,setDays] = useState([]);
     useEffect(()=>{
@@ -18,7 +19,9 @@ const DashBord = () => {
     col-start-1 col-end-13 flex
     ">
         <div className="w-3/12 flex justify-center items-center">
+     <Link to= "/">  
        <h1 className="text-2xl">Money Tarker</h1>
+     </Link>
         </div>
        <div className="w-3/4 flex justify-evenly">
        <p className="w-1/2 pt-7">Total Saving  <span className=" text-[3rem]">3030.25</span></p>

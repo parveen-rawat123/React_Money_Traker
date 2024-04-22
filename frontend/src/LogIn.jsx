@@ -1,58 +1,18 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-const SignUp = () => {
-  let [Formdata, setFormdata] = useState({});
-
-  const HandleForm = (e) => {
-    let val = e.target.value;
-    let name = e.target.name;
-    setFormdata({
-      ...Formdata,
-      [name]: val,
-    });
-  };
-
-  const SubmitForm = async (e) => {
-    e.preventDefault();
-    const responce = await fetch("http://localhost:3000/demo", {
-      method: "POST",
-      body: JSON.stringify(Formdata),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-    let data = await responce.json();
-    console.log(data);
-  };
+const LogIn = () => {
   return (
-    <>
+    <div>
       <div className="h-screen flex justify-center items-center bg-slate-300">
         <div className="w-full max-w-xs">
           <form
             className="bg-white  rounded px-8 pt-6 pb-8 mb-4 z-40
             shadow-lg shadow-indigo-500/40
             "
-            onSubmit={SubmitForm}
+            
           >
             <p className="text-end">
               <Link to="/">X</Link>
             </p>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-lg font-bold mb-2"
-                htmlFor="username"
-              >
-                Username
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
-                id="username"
-                type="text"
-                placeholder="Username"
-                onChange={HandleForm}
-                name="username"
-              />
-            </div>
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-lg font-bold mb-2"
@@ -65,7 +25,6 @@ const SignUp = () => {
                 id="email"
                 type="email"
                 placeholder="Email"
-                onChange={HandleForm}
                 name="email"
               />
             </div>
@@ -81,7 +40,6 @@ const SignUp = () => {
                 id="password"
                 type="password"
                 placeholder="******************"
-                onChange={HandleForm}
                 name="password"
               />
             </div>
@@ -95,13 +53,13 @@ const SignUp = () => {
             </div>
             <div>
               <p>
-                Already have an account?<Link to={"/LogIn"} className="text-blue-600">LogIn here</Link>
+              Don't have an account? <Link to={"/SignUp"} className="text-blue-600"> Sign up here</Link>
               </p>
             </div>
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
-export default SignUp;
+export default LogIn;

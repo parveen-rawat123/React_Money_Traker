@@ -2,20 +2,20 @@ import { Link } from "react-router-dom";
 const LogIn = () => {
   return (
     <div>
-      <div className="h-screen flex justify-center items-center bg-slate-300">
+      <div className="h-screen flex justify-center items-center bg-white ">
         <div className="w-full max-w-xs">
           <form
-            className="bg-white  rounded px-8 pt-6 pb-8 mb-4 z-40
-            shadow-lg shadow-indigo-500/40
+            className=" rounded px-8 pt-6 pb-8 mb-4 z-40
+            shadow-lg shadow-indigo-500/40 bg-slate-200 w-[23rem]
             "
-            
           >
-            <p className="text-end">
-              <Link to="/">X</Link>
-            </p>
+            <div className="mb-3">
+          <h1 className="text-[2.1rem] font-semibold">Existing Customers</h1>
+          <h3 className="text-[1.3rem] font-medium">Login Into FinTrack</h3>
+            </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-lg font-bold mb-2"
+                className="block text-gray-700 text-md font-medium mb-1"
                 htmlFor="email"
               >
                 Email
@@ -30,7 +30,7 @@ const LogIn = () => {
             </div>
             <div className="mb-6">
               <label
-                className="block text-gray-700 text-lg font-bold mb-2"
+                className="block text-gray-700 text-md font-medium mb-1"
                 htmlFor="password"
               >
                 Password
@@ -45,15 +45,15 @@ const LogIn = () => {
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20 rounded-full focus:outline-none focus:shadow-outline text-md"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-28 rounded-full focus:outline-none focus:shadow-outline text-md"
                 type="submit"
               >
                 Sign In
               </button>
             </div>
             <div>
-              <p>
-              Don't have an account? <Link to={"/SignUp"} className="text-blue-600"> Sign up here</Link>
+            <p className="text-center mt-2">
+            Don&#39;t have an account? <Link to={"/SignUp"} className="text-blue-600"> SignIn here</Link>
               </p>
             </div>
           </form>

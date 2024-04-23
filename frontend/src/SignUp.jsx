@@ -24,22 +24,23 @@ const SignUp = () => {
     let data = await responce.json();
     console.log(data);
   };
-  return (
+return (
     <>
-      <div className="h-screen flex justify-center items-center bg-slate-300">
+      <div className="h-screen flex justify-center items-center ">
         <div className="w-full max-w-xs">
           <form
-            className="bg-white  rounded px-8 pt-6 pb-8 mb-4 z-40
-            shadow-lg shadow-indigo-500/40
+            className="rounded px-8 pt-6 pb-8 mb-4 z-40
+            shadow-lg shadow-indigo-500/40 bg-slate-200 w-[23rem]
             "
             onSubmit={SubmitForm}
           >
-            <p className="text-end">
-              <Link to="/">X</Link>
-            </p>
+            <div className="mb-3">
+          <h1 className="text-[2.1rem] font-semibold">New Customers</h1>
+          <h3 className="text-[1.3rem] font-medium">Sign Into FinTrack</h3>
+            </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-lg font-bold mb-2"
+                className="block text-gray-700 text-md font-medium mb-1"
                 htmlFor="username"
               >
                 Username
@@ -55,10 +56,10 @@ const SignUp = () => {
             </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-lg font-bold mb-2"
+                className="block text-gray-700 text-md font-medium mb-1"
                 htmlFor="email"
               >
-                Email
+                Email Address 
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
@@ -71,10 +72,10 @@ const SignUp = () => {
             </div>
             <div className="mb-6">
               <label
-                className="block text-gray-700 text-lg font-bold mb-2"
+                className="block text-gray-700 text-md font-medium mb-1"
                 htmlFor="password"
               >
-                Password
+                Your Password
               </label>
               <input
                 className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
@@ -87,15 +88,15 @@ const SignUp = () => {
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20 rounded-full focus:outline-none focus:shadow-outline text-md"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-28 rounded-full focus:outline-none focus:shadow-outline text-md"
                 type="submit"
               >
                 Sign In
               </button>
             </div>
             <div>
-              <p>
-                Already have an account?<Link to={"/LogIn"} className="text-blue-600">LogIn here</Link>
+              <p className="text-center mt-2">Already have an account?
+             <Link to={"/LogIn"} className="text-blue-600"> Login here</Link>
               </p>
             </div>
           </form>

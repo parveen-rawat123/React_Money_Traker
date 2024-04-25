@@ -1,23 +1,18 @@
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
-// import {useformik}  from 'formik'
+import { useFormik } from "formik";
 const LogIn = () => {
-  const [Issignup,setIssignup] = useState();
 
- const loggendin = (e)=>{
-  let name =  e.target.name 
-  let val =  e.target.value
-    setIssignup({
-     ...Issignup,
-     [name] :  val
-    })
- };
- 
- const Handlesubmit = ((e)=>{
-   e.preventDefault();
-   console.log(Issignup)
+  const { values, handlesubmit, handleChange, handleBlur } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onsubmit: (value) => {
+      console.log("the value is" , value);
+    },
   });
+  
   return (
     <div>
       <div className="h-screen flex justify-center items-center signup">
@@ -26,7 +21,7 @@ const LogIn = () => {
             className=" rounded px-8 pt-6 pb-8 mb-4 z-40
             shadow-lg shadow-indigo-500/40 bg-slate-200 w-[23rem]
             "
-            onSubmit={Handlesubmit}
+            onSubmit={handlesubmit}
           >
             <div className="text-end">
               <Link to={"/"}>
@@ -52,7 +47,9 @@ const LogIn = () => {
                 type="email"
                 placeholder="Email"
                 name="email"
-                onChange={loggendin}
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </div>
             <div className="mb-6">
@@ -68,7 +65,9 @@ const LogIn = () => {
                 type="password"
                 placeholder="******************"
                 name="password"
-                onChange={loggendin}
+                onChange={handleChange}
+                value={values.password}
+                onBlur={handleBlur}
               />
             </div>
             <div className="flex items-center justify-center">
@@ -76,7 +75,7 @@ const LogIn = () => {
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-28 rounded-full focus:outline-none focus:shadow-outline text-md"
                 type="submit"
               >
-                Sign In
+                Log In
               </button>
             </div>
             <div>

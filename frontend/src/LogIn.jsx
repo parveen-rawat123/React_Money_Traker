@@ -1,17 +1,43 @@
 import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
+// import {useformik}  from 'formik'
 const LogIn = () => {
+  const [Issignup,setIssignup] = useState();
+
+ const loggendin = (e)=>{
+  let name =  e.target.name 
+  let val =  e.target.value
+    setIssignup({
+     ...Issignup,
+     [name] :  val
+    })
+ };
+ 
+ const Handlesubmit = ((e)=>{
+   e.preventDefault();
+   console.log(Issignup)
+  });
   return (
     <div>
-      <div className="h-screen flex justify-center items-center bg-white ">
+      <div className="h-screen flex justify-center items-center signup">
         <div className="w-full max-w-xs">
           <form
             className=" rounded px-8 pt-6 pb-8 mb-4 z-40
             shadow-lg shadow-indigo-500/40 bg-slate-200 w-[23rem]
             "
+            onSubmit={Handlesubmit}
           >
+            <div className="text-end">
+              <Link to={"/"}>
+                <CloseIcon />
+              </Link>
+            </div>
             <div className="mb-3">
-          <h1 className="text-[2.1rem] font-semibold">Existing Customers</h1>
-          <h3 className="text-[1.3rem] font-medium">Login Into FinTrack</h3>
+              <h1 className="text-[2.1rem] font-semibold">
+                Existing Customers
+              </h1>
+              <h3 className="text-[1.3rem] font-medium">Login Into FinTrack</h3>
             </div>
             <div className="mb-4">
               <label
@@ -26,6 +52,7 @@ const LogIn = () => {
                 type="email"
                 placeholder="Email"
                 name="email"
+                onChange={loggendin}
               />
             </div>
             <div className="mb-6">
@@ -41,6 +68,7 @@ const LogIn = () => {
                 type="password"
                 placeholder="******************"
                 name="password"
+                onChange={loggendin}
               />
             </div>
             <div className="flex items-center justify-center">
@@ -52,8 +80,11 @@ const LogIn = () => {
               </button>
             </div>
             <div>
-            <p className="text-center mt-2">
-            Don&#39;t have an account? <Link to={"/SignUp"} className="text-blue-600"> SignIn here</Link>
+              <p className="text-center mt-2">
+                Don&#39;t have an account?{" "}
+                <Link to={"/SignUp"} className="text-blue-600">
+                  SignIn here
+                </Link>
               </p>
             </div>
           </form>

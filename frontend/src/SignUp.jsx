@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 const SignUp = () => {
   let [Formdata, setFormdata] = useState({});
 
@@ -24,9 +25,9 @@ const SignUp = () => {
     let data = await responce.json();
     console.log(data);
   };
-return (
+  return (
     <>
-      <div className="h-screen flex justify-center items-center ">
+      <div className="h-screen flex justify-center items-center signup">
         <div className="w-full max-w-xs">
           <form
             className="rounded px-8 pt-6 pb-8 mb-4 z-40
@@ -34,9 +35,14 @@ return (
             "
             onSubmit={SubmitForm}
           >
+            <div className="text-end">
+              <Link to={"/"}>
+              <CloseIcon />
+              </Link>
+            </div>
             <div className="mb-3">
-          <h1 className="text-[2.1rem] font-semibold">New Customers</h1>
-          <h3 className="text-[1.3rem] font-medium">Sign Into FinTrack</h3>
+              <h1 className="text-[2.1rem] font-semibold">New Customers</h1>
+              <h3 className="text-[1.3rem] font-medium">Sign Into FinTrack</h3>
             </div>
             <div className="mb-4">
               <label
@@ -59,7 +65,7 @@ return (
                 className="block text-gray-700 text-md font-medium mb-1"
                 htmlFor="email"
               >
-                Email Address 
+                Email Address
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
@@ -67,7 +73,7 @@ return (
                 type="email"
                 placeholder="Email"
                 onChange={HandleForm}
-                name="email"
+                name="Email"
               />
             </div>
             <div className="mb-6">
@@ -95,8 +101,12 @@ return (
               </button>
             </div>
             <div>
-              <p className="text-center mt-2">Already have an account?
-             <Link to={"/LogIn"} className="text-blue-600"> Login here</Link>
+              <p className="text-center mt-2">
+                Already have an account?
+                <Link to={"/LogIn"} className="text-blue-600">
+                  {" "}
+                  Login here
+                </Link>
               </p>
             </div>
           </form>

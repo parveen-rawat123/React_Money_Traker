@@ -15,7 +15,7 @@ const SignUp = () => {
 
   const SubmitForm = async (e) => {
     e.preventDefault();
-    const responce = await fetch("http://localhost:3000/demo", {
+    const responce = await fetch("http://localhost:3000/signUp", {
       method: "POST",
       body: JSON.stringify(Formdata),
       headers: {
@@ -73,7 +73,7 @@ const SignUp = () => {
                 type="email"
                 placeholder="Email"
                 onChange={HandleForm}
-                name="Email"
+                name="email"
               />
             </div>
             <div className="mb-6">

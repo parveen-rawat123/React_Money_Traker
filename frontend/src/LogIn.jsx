@@ -1,18 +1,30 @@
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import { useFormik } from "formik";
+import { useState } from "react";
 const LogIn = () => {
+  const [LogedIn, setLogedIn] = useState();
+  const [res , setres] = useState();
 
-  const { values, handlesubmit, handleChange, handleBlur } = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    onsubmit: (value) => {
-      console.log("the value is" , value);
-    },
-  });
-  
+  const handleChange = (e) => {
+    let name = e.target.name;
+    let val = e.target.value;
+    setLogedIn({
+      ...LogedIn,
+      [name]: val,
+    });
+  };
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    const responce =  await fetch("http://localhost:3000/logIn", {
+      method : "POST",
+      body : JSON.stringify(LogedIn),
+      headers : {
+        "content-type" : "application/json"
+      },
+    })
+    let data = await  responce.json()
+     setres(data)
+  }
   return (
     <div>
       <div className="h-screen flex justify-center items-center signup">
@@ -47,10 +59,9 @@ const LogIn = () => {
                 type="email"
                 placeholder="Email"
                 name="email"
-                value={values.email}
                 onChange={handleChange}
-                onBlur={handleBlur}
               />
+              <p>{res}</p>
             </div>
             <div className="mb-6">
               <label
@@ -66,8 +77,6 @@ const LogIn = () => {
                 placeholder="******************"
                 name="password"
                 onChange={handleChange}
-                value={values.password}
-                onBlur={handleBlur}
               />
             </div>
             <div className="flex items-center justify-center">

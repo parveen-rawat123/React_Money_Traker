@@ -13,10 +13,9 @@ const Navbaar = () => {
         </div>
         <div className="flex gap-20">
             <Link to="/LogIn" className="flex" 
-           
             >
             <PersonIcon /> 
-              </Link>
+              </Link >
         </div>
       </div>
     </>

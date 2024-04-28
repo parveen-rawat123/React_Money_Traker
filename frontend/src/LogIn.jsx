@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
+// import axios, {isCancel, AxiosError} from 'axios'/;
 const LogIn = () => {
+  const navigate = useNavigate()
   const [LogedIn, setLogedIn] = useState();
-  const [res , setres] = useState();
+  // const [res , setres] = useState();
+  const [error , seterror]= useState("")
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -15,7 +18,7 @@ const LogIn = () => {
   };
   const handlesubmit = async (e) => {
     e.preventDefault();
-    const responce =  await fetch("http://localhost:3000/logIn", {
+    const responce =  await fetch("http://localhost:3000/login", {
       method : "POST",
       body : JSON.stringify(LogedIn),
       headers : {
@@ -23,8 +26,17 @@ const LogIn = () => {
       },
     })
     let data = await  responce.json()
-     setres(data)
+    console.log(data)
+    if(data.success == false){
+      console.log("just for cheking ")
+      seterror(data.message)
+     navigate('/LogIn');
+    }
+    else{
+      navigate('/');
+    }
   }
+  
   return (
     <div>
       <div className="h-screen flex justify-center items-center signup">
@@ -61,7 +73,7 @@ const LogIn = () => {
                 name="email"
                 onChange={handleChange}
               />
-              <p>{res}</p>
+              {/* <p>{res}</p> */}
             </div>
             <div className="mb-6">
               <label
@@ -86,6 +98,7 @@ const LogIn = () => {
               >
                 Log In
               </button>
+              {error && <div>{error}</div>}
             </div>
             <div>
               <p className="text-center mt-2">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 const SignUp = () => {
   let [Formdata, setFormdata] = useState({});
-
+//  let [data , setdata] = useState({})
   const HandleForm = (e) => {
     let val = e.target.value;
     let name = e.target.name;
@@ -23,7 +23,7 @@ const SignUp = () => {
       },
     });
     let data = await responce.json();
-    console.log(data);
+    console.log(data)
   };
   return (
     <>
@@ -36,13 +36,14 @@ const SignUp = () => {
             onSubmit={SubmitForm}
           >
             <div className="text-end">
-              <Link to={"/"}>
+              <Link to="/">
               <CloseIcon />
               </Link>
             </div>
             <div className="mb-3">
               <h1 className="text-[2.1rem] font-semibold">New Customers</h1>
               <h3 className="text-[1.3rem] font-medium">Sign Into FinTrack</h3>
+              {/* {data && <p> you are resiter</p>} */}
             </div>
             <div className="mb-4">
               <label

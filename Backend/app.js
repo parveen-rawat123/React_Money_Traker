@@ -21,6 +21,7 @@ mongoose
 
 app.use(cors());
 app.use(bodyparser.json());
+app.use(express.urlencoded({extended}))
 
 const logrequest = (req, res, next) => {
   console.log("midddleware decleard");
@@ -45,8 +46,6 @@ app.post("/signUp", async (req, res) => {
     const registerUser = await User.register(newUser, password);
     console.log(registerUser);
     res.send(registerUser);
-    console.log(registerUser);
-    console.log(err);
     if(registerUser.authenticate()){
       res.send("user is resiter")
     }

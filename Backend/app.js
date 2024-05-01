@@ -1,5 +1,4 @@
 const express = require("express");
-// import express from "express"
 const app = express();
 const port = process.env.PORT || 3000;
 const cors = require("cors");
@@ -11,6 +10,7 @@ const passport = require("passport");
 const localStratgy = require("passport-local");
 flash = require("express-flash");
 app.use(flash());
+
 mongoose
   .connect("mongodb://127.0.0.1:27017/Money", {
     useNewUrlParser: true,
@@ -21,7 +21,7 @@ mongoose
 
 app.use(cors());
 app.use(bodyparser.json());
-app.use(express.urlencoded({extended}))
+// app.use(express.urlencoded({extended}))
 
 const logrequest = (req, res, next) => {
   console.log("midddleware decleard");
@@ -46,15 +46,9 @@ app.post("/signUp", async (req, res) => {
     const registerUser = await User.register(newUser, password);
     console.log(registerUser);
     res.send(registerUser);
-    if(registerUser.authenticate()){
-      res.send("user is resiter")
-    }
-    else{
-      res.send("user are not resister")
-    }
-    } catch (err) {
-         console.log(`error is ${err}`)
-    }
+  } catch (err) {
+    console.log(`error ih is ${err}`);
+  }
 });
 
 app.post(

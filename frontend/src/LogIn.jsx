@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 // import axios, {isCancel, AxiosError} from 'axios'/;
@@ -103,9 +103,9 @@ const LogIn = () => {
             <div>
               <p className="text-center mt-2">
                 Don&#39;t have an account?{" "}
-                <Link to={"/SignUp"} className="text-blue-600">
+                <NavLink to="/SignUp" className="text-blue-600">
                   SignIn here
-                </Link>
+                </NavLink>
               </p>
             </div>
           </form>

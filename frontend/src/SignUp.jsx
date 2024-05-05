@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
+import {  toast } from 'react-toastify'
 const SignUp = () => {
   let [Formdata, setFormdata] = useState({});
+  const navigate = useNavigate();
   const HandleForm = (e) => {
     let val = e.target.value;
     let name = e.target.name;
@@ -13,13 +15,6 @@ const SignUp = () => {
   };
 
   const SubmitForm = async (e) => {
-    //     const {username , email , password} = Formdata
-    //     if(username === ""){
-    //  alert("please enter your name")
-    //     }else if(email === ""){
-    //       alert("plese enter email")
-    //     }
-
     e.preventDefault();
     const responce = await fetch("http://localhost:3000/signUp", {
       method: "POST",
@@ -30,6 +25,19 @@ const SignUp = () => {
     });
     let data = await responce.json();
     console.log(data);
+    if (responce.status === 201) {
+      navigate("/");
+      toast.success('you are successfully registered')
+    } else if (responce.status === 400) {
+      toast.error(data.error);
+    } else if (responce.status === 409) {
+      toast.info(data.error);
+      navigate('/LogIn')
+    } else if (responce.status === 500) {
+      toast.error(data.error);
+    }else {
+      toast.error('Unexpected error occurred');
+    }
   };
   return (
     <>

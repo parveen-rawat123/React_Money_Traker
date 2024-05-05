@@ -1,12 +1,10 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-// import axios, {isCancel, AxiosError} from 'axios'/;
+import { toast } from "react-toastify";
 const LogIn = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [LogedIn, setLogedIn] = useState();
-  // const [res , setres] = useState();
-  const [error , seterror]= useState("")
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -18,25 +16,27 @@ const LogIn = () => {
   };
   const handlesubmit = async (e) => {
     e.preventDefault();
-    const responce =  await fetch("http://localhost:3000/login", {
-      method : "POST",
-      body : JSON.stringify(LogedIn),
-      headers : {
-        "content-type" : "application/json"
+    const responce = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      body: JSON.stringify(LogedIn),
+      headers: {
+        "content-type": "application/json",
       },
-    })
-    let data = await  responce.json()
-    console.log(data)
-    if(data.success == false){
-      console.log("just for cheking ")
-      seterror(data.message)
-     navigate('/LogIn');
+    });
+
+    let data = await responce.json();
+    console.log(data);
+    if (responce.status === 201) {
+      toast.success('You are successfully Loged in')
+      navigate("/");
+    } else if (responce.status === 500) {
+      toast.info(data.error);
+    } else if (responce.status === 501) {
+      toast.error(data.error);
+      navigate('/SignUp')
     }
-    else{
-      navigate('/');
-    }
-  }
-  
+  };
+
   return (
     <div>
       <div className="h-screen flex justify-center items-center signup">
@@ -51,7 +51,7 @@ const LogIn = () => {
               <Link to={"/"}>
                 <CloseIcon />
               </Link>
-            </div>
+            </div> 
             <div className="mb-3">
               <h1 className="text-[2.1rem] font-semibold">
                 Existing Customers
@@ -73,7 +73,6 @@ const LogIn = () => {
                 name="email"
                 onChange={handleChange}
               />
-              {/* <p>{res}</p> */}
             </div>
             <div className="mb-6">
               <label
@@ -98,7 +97,6 @@ const LogIn = () => {
               >
                 Log In
               </button>
-              {error && <div>{error}</div>}
             </div>
             <div>
               <p className="text-center mt-2">

@@ -6,7 +6,7 @@ router.post("/signUp", async (req, res) => {
   let { username, email, password } = req.body;
   //if these value is missing then it will work
   if (!username || !email || !password) {
-    res.status(400).json({ error: "Please Fill  All Details" });
+    res.status(400).json({ error: "Fill the all Details" });
   } else {
     try {
       const preuser = await User.findOne({ email: email });
@@ -31,7 +31,7 @@ router.post("/login", async (req, res) => {
   console.log(req.body);
   let { email, password } = req.body;
   if (!email || !password) {
-    res.status(500).json({ error: "Plase Fill All Details" });
+    res.status(500).json({ error: "Fill the all Details" });
   } else {
     try {
       let finduser = await User.findOne({ email: email });

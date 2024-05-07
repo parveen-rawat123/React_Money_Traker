@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import Navbaar from "./Navbaar"
+import Section_two from "./Section_two"
 const HomePage = () => {
   return (
     <>
@@ -11,6 +12,7 @@ const HomePage = () => {
             <p className="mt-4 font-sans  md:text-xl  px-28 text-neutral-300 font-semibold">Effortlessly manage your finances with our intuitive dashboard. Gain insights, track expenses, and take control of your financial future. Whether budgeting for the month ahead or planning for the long term.</p>
         <button className="mt-8 px-8 py-2 bg-white border border- rounded-full text-[1.2rem] text-gray-900 cursor-pointer hover:text-black font-semibold"> <Link to="/DashBord">Get Started &gt;&gt;&gt;</Link></button> </div>
     </div>
+    <Section_two/>
     </>
   )
 }

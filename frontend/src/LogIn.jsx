@@ -40,10 +40,10 @@ const LogIn = () => {
   return (
     <div>
       <div className="h-screen flex justify-center items-center signup">
-        <div className="w-full max-w-xs">
+        <div className="w-full max-w-xs mr-10">
           <form
             className=" rounded px-8 pt-6 pb-8 mb-4 z-40
-            shadow-lg shadow-indigo-500/40 bg-slate-200 w-[23rem]
+            shadow-lg shadow-indigo-500/40 bg-slate-200 w-[25rem]
             "
             onSubmit={handlesubmit}
           >
@@ -66,10 +66,10 @@ const LogIn = () => {
                 Email
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
+                className=" appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
                 id="email"
                 type="email"
-                placeholder="Email"
+                placeholder="E-mail"
                 name="email"
                 onChange={handleChange}
               />
@@ -82,29 +82,31 @@ const LogIn = () => {
                 Password
               </label>
               <input
-                className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
+                className=" appearance-none border  r w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
                 id="password"
                 type="password"
-                placeholder="******************"
+                placeholder="********"
                 name="password"
                 onChange={handleChange}
               />
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-28 rounded-full focus:outline-none focus:shadow-outline text-md"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full rounded-full focus:outline-none focus:shadow-outline text-md"
                 type="submit"
               >
-                Log In
+                Login
               </button>
             </div>
-            <div>
-              <p className="text-center mt-2">
-                Don&#39;t have an account?{" "}
-                <NavLink to="/SignUp" className="text-blue-600">
-                  SignIn here
+            <div className="flex justify-between ">
+              <p className="text-center mt-5 text-sm">
+                <NavLink to="/SignUp" className="text-blue-700 hover:underline">
+                  Create Account
                 </NavLink>
               </p>
+              <p className="text-sm mt-5">
+                <NavLink to='' className="text-blue-700 hover:underline">Forgot your password?
+                </NavLink></p>
             </div>
           </form>
         </div>

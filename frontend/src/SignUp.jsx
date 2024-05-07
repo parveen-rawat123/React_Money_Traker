@@ -29,7 +29,7 @@ const SignUp = () => {
       navigate("/");
       toast.success('you are successfully registered')
     } else if (responce.status === 400) {
-      toast.error(data.error);
+      toast.info(data.error);
     } else if (responce.status === 409) {
       toast.info(data.error);
       navigate('/LogIn')
@@ -44,8 +44,8 @@ const SignUp = () => {
       <div className="h-screen flex justify-center items-center signup">
         <div className="w-full max-w-xs">
           <form
-            className="rounded px-8 pt-6 pb-8 mb-4 z-40
-            shadow-lg shadow-indigo-500/40 bg-slate-200 w-[23rem]
+            className="rounded px-8 pt-6 pb-8 mb-4 z-40 
+            shadow-lg shadow-indigo-500/40 bg-slate-200 w-[25rem]
             "
             onSubmit={SubmitForm}
           >
@@ -67,7 +67,7 @@ const SignUp = () => {
                 Username
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
+                className=" appearance-none border   w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-black"
                 id="username"
                 type="text"
                 placeholder="Username"
@@ -83,7 +83,7 @@ const SignUp = () => {
                 Email Address
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
+                className="appearance-none border  w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:ring-blue-500 focus:border-black"
                 id="email"
                 type="email"
                 placeholder="Email"
@@ -99,7 +99,7 @@ const SignUp = () => {
                 Your Password
               </label>
               <input
-                className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
+                className=" appearance-none border w-full py-2 px-3 text-gray-900 mb-3 leading-tight focus:outline-none focus:ring-blue-500 focus:border-black"
                 id="password"
                 type="password"
                 placeholder="******************"
@@ -109,20 +109,20 @@ const SignUp = () => {
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-28 rounded-full focus:outline-none focus:shadow-outline text-md"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full rounded-full focus:outline-none focus:shadow-outline text-md"
                 type="submit"
               >
-                Sign In
+                Sign up
               </button>
             </div>
-            <div>
-              <p className="text-center mt-2">
-                Already have an account?
-                <Link to={"/LogIn"} className="text-blue-600">
-                  {" "}
-                  Login here
+            <div className="flex justify-between">
+              <p className="text-center mt-5">
+                <Link to={"/LogIn"} className="text-blue-600 text-sm hover:underline">
+                Sign in with your account 
                 </Link>
               </p>
+              <p className="mt-5"><Link to='' className="text-sm  hover:underline text-blue-600"
+              >Forgot your password? </Link></p>
             </div>
           </form>
         </div>

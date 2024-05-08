@@ -14,7 +14,7 @@
 
 .signup {
   background-color: rgba(144, 144, 209, 0.79);
-  animation: transition 0.75s;
+  animation: transition 1.7s;
 }
 @keyframes transition {
   from {
@@ -29,4 +29,9 @@
 .toastBody {
   font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
+}
+.btn:hover{
+  background-color: #714ef5;
+  color: white;
+  transition: all 0.8s ease;
 }

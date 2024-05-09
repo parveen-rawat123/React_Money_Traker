@@ -5,7 +5,7 @@ const Navbaar = () => {
   const [color,setcolor] = useState(false)
 
   const changecolor = ()=>{
-    if(window.scrollY >= 70){
+    if(window.scrollY >= 100){
  setcolor(true)
     }else{
       setcolor(false)

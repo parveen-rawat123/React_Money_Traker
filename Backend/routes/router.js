@@ -1,7 +1,9 @@
 const express = require("express");
 const router = new express.Router();
 const User = require("../models/signUp");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+
 //for regostration
 router.post("/signUp", async (req, res) => {
   let { username, email, password } = req.body;
@@ -36,26 +38,22 @@ router.post("/login", async (req, res) => {
   } else {
     try {
       let finduser = await User.findOne({ email: email });
-      if (!finduser ) {
+      if (!finduser) {
         res.status(501).json({ error: "you are Not Registered" });
       } else {
-        bcrypt.compare(password, User.password, (err, result) => {
-          if (err) {
-            console.error(`Password comparison error: ${err}`);
-            res.status(502).json({ error: "Server error" });
-          } else if (result) {
-            res.status(200).json({ message: "Login successful", user: Userser });
-          } else {
-            res.status(401).json({ error: "Incorrect password" });
-          }
-        });
+        let isMatched = bcrypt.compare(password, finduser.password);
+        if (!isMatched) {
+          res.status(502).json({ error: "invalid details", user: Userser });
+        } else {
+          // token
+          const tiken = await finduser.genrateAuthtoken();
+          // res.status(401).json({ message: "Incorrect password" });
+        }
       }
-    }
-    catch (err) {
+    } catch (err) {
       console.log(`login catch bloack error${err}`);
     }
-}
-}
-);
+  }
+});
 
 module.exports = router;

@@ -35,4 +35,13 @@ const UserSchema = new Schema({
 });
 
 UserSchema.plugin(passportLocalMongoose);
+
+UserSchema.method.genrateAuthtoken = async function(){
+  try{
+  let token = jsw.sign({id:this._id,key})
+  }catch(err){
+
+  }
+}
+
 module.exports = mongoose.model("User", UserSchema);

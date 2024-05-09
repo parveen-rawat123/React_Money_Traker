@@ -9,7 +9,7 @@ const passport = require("passport");
 const localStratgy = require("passport-local");
 const router = require("./routes/router")
 const flash = require("express-flash");
-
+const cookieParser = require('cookie-parser')
 app.use(flash());
 app.use(cors());
 app.use(bodyparser.json());
@@ -25,6 +25,7 @@ mongoose
 
 
 app.use(passport.initialize());
+app.use(cookieParser())
 passport.use(new localStratgy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

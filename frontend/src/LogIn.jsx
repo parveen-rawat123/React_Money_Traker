@@ -1,10 +1,21 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import { toast } from "react-toastify";
 const LogIn = () => {
   const navigate = useNavigate();
   const [LogedIn, setLogedIn] = useState();
+  const [showpassword, setshowpassword] = useState(false);
+
+  const passwordshow = () => {
+    if (showpassword === false) {
+      setshowpassword(true);
+    } else {
+      setshowpassword(false);
+    }
+  };
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -15,31 +26,30 @@ const LogIn = () => {
     });
   };
   const handlesubmit = async (e) => {
-  e.preventDefault();
-  const responce = await fetch("http://localhost:3000/login", {
-    method: "POST",
-    body: JSON.stringify(LogedIn),
-    headers: {
-      "content-type": "application/json",
-    },
-  });
+    e.preventDefault();
+    const responce = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      body: JSON.stringify(LogedIn),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
 
-  let data = await responce.json();
-  console.log(data);
-  if (responce.status === 200) {
-    toast.error(data.error)
-    navigate("/");
-  } else if (responce.status === 401) {
-    toast.error(data.error);
-  } else if (responce.status === 500) {
-    toast.info(data.error);
-  }else if(responce.status === 501 ) {
-    toast.info(data.error)
-  }
-  else if(responce.status === 502 ) {
-    toast.info(data.error)
-  }
-};
+    let data = await responce.json();
+    console.log(data);
+    if (responce.status === 200) {
+      toast.error(data.error);
+      navigate("/");
+    } else if (responce.status === 401) {
+      toast.error(data.error);
+    } else if (responce.status === 500) {
+      toast.info(data.error);
+    } else if (responce.status === 501) {
+      toast.info(data.error);
+    } else if (responce.status === 502) {
+      toast.info(data.error);
+    }
+  };
 
   return (
     <div>
@@ -55,7 +65,7 @@ const LogIn = () => {
               <Link to={"/"}>
                 <CloseIcon />
               </Link>
-            </div> 
+            </div>
             <div className="mb-3">
               <h1 className="text-[2.1rem] font-semibold">
                 Existing Customers
@@ -78,7 +88,7 @@ const LogIn = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="mb-6">
+            <div className="mb-6 relative">
               <label
                 className="block text-gray-700 text-md font-medium mb-1"
                 htmlFor="password"
@@ -88,11 +98,22 @@ const LogIn = () => {
               <input
                 className=" appearance-none border  r w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-700"
                 id="password"
-                type="password"
+                type={showpassword ? "text" : "password"}
                 placeholder="********"
                 name="password"
                 onChange={handleChange}
               />
+              <span
+                className="cursor-pointer absolute right-1 bottom-3  p-[0.39rem]"
+                onClick={passwordshow}
+              >
+                {" "}
+                {showpassword ? (
+                  <VisibilityIcon className="icon" />
+                ) : (
+                  <VisibilityOffIcon className="icon" />
+                )}{" "}
+              </span>
             </div>
             <div className="flex items-center justify-center">
               <button
@@ -109,8 +130,10 @@ const LogIn = () => {
                 </NavLink>
               </p>
               <p className="text-sm mt-5">
-                <NavLink to='' className="text-blue-700 hover:underline">Forgot your password?
-                </NavLink></p>
+                <NavLink to="" className="text-blue-700 hover:underline">
+                  Forgot your password?
+                </NavLink>
+              </p>
             </div>
           </form>
         </div>

@@ -15,27 +15,31 @@ const LogIn = () => {
     });
   };
   const handlesubmit = async (e) => {
-    e.preventDefault();
-    const responce = await fetch("http://localhost:3000/login", {
-      method: "POST",
-      body: JSON.stringify(LogedIn),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
+  e.preventDefault();
+  const responce = await fetch("http://localhost:3000/login", {
+    method: "POST",
+    body: JSON.stringify(LogedIn),
+    headers: {
+      "content-type": "application/json",
+    },
+  });
 
-    let data = await responce.json();
-    console.log(data);
-    if (responce.status === 201) {
-      toast.success('You are successfully Loged in')
-      navigate("/");
-    } else if (responce.status === 500) {
-      toast.info(data.error);
-    } else if (responce.status === 501) {
-      toast.error(data.error);
-      navigate('/SignUp')
-    }
-  };
+  let data = await responce.json();
+  console.log(data);
+  if (responce.status === 200) {
+    toast.error(data.error)
+    navigate("/");
+  } else if (responce.status === 401) {
+    toast.error(data.error);
+  } else if (responce.status === 500) {
+    toast.info(data.error);
+  }else if(responce.status === 501 ) {
+    toast.info(data.error)
+  }
+  else if(responce.status === 502 ) {
+    toast.info(data.error)
+  }
+};
 
   return (
     <div>

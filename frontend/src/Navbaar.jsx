@@ -14,7 +14,7 @@ const Navbaar = () => {
   window.addEventListener('scroll',changecolor)
   return (
     <>
-      <div className={`w-full  h-[70px] flex justify-around items-center  text-green-400
+      <div className={`w-full  h-[70px] flex justify-around items-center  text-white text-bold
        ${color ? 'header_bg': 'navbaar'}`}>
         <div className="flex gap-14  pr-48 ">
           <h2 className="text-[1.3rem]">ExpenseTrackr</h2>

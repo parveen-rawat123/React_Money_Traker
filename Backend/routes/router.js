@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 //for regostration
 router.post("/signUp", async (req, res) => {
   let { username, email, password } = req.body;
+  console.log(req.body)
   //if these value is missing then it will work
   if (!username || !email || !password) {
     res.status(400).json({ error: "Fill the all Details" });
@@ -15,12 +16,17 @@ router.post("/signUp", async (req, res) => {
       const preuser = await User.findOne({ email: email });
       if (preuser) {
         res.status(409).json({ error: "User Already Exists" });
+
       } else {
-        const newUser = new User({ email, username, password });
-        const registerUser = await User.register(newUser, password);
-        console.log(registerUser);
-        res.status(201).json({ message: "User Registered Successfully" });
-        console.log("user registered");
+       const finaluser = new User({
+        username,email,password
+       });
+      //  console.log(finaluser)
+       const storedata = await finaluser.save()
+       console.log(storedata)
+      //  res.send(finaluser)
+       res.status(201).json({message : 'user registered'})
+       
       }
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -31,29 +37,35 @@ router.post("/signUp", async (req, res) => {
 
 //log in  route
 router.post("/login", async (req, res) => {
-  console.log(req.body);
   let { email, password } = req.body;
   if (!email || !password) {
     res.status(500).json({ error: "Fill the all Details" });
-  } else {
+  } 
     try {
-      let finduser = await User.findOne({ email: email });
-      if (!finduser) {
-        res.status(501).json({ error: "you are Not Registered" });
-      } else {
-        let isMatched = bcrypt.compare(password, finduser.password);
-        if (!isMatched) {
-          res.status(502).json({ error: "invalid details", user: Userser });
-        } else {
-          // token
-          const tiken = await finduser.genrateAuthtoken();
-          // res.status(401).json({ message: "Incorrect password" });
+        let finduser = await User.findOne({ email: email });
+        if(finduser){
+          const isMatch  = await bcrypt.compare({password, finduser.password}); 
+
         }
-      }
-    } catch (err) {
-      console.log(`login catch bloack error${err}`);
+    } catch (error) {
+      
     }
-  }
+    // try {
+    //   if(finduser){
+    //     const isMatch = await bcrypt.compare(password,finduser.password)
+    //     // console.log(password)
+    //     if(!isMatch){
+    //       res.status(501).json({error : 'invalid details'})
+    //     }
+    //   }else{
+    //     console.log("password match")
+    //     // const token = await finduser.generateAuthtoken();
+    //     // console.log(token)
+    //   }
+    // } catch (err) {
+    //   console.log(`login catch bloack error${err}`);
+    // }
+  
 });
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import { useState } from "react";
+import './App.css';
 const Navbaar = () => {
   const [color,setcolor] = useState(false)
 
@@ -14,17 +15,17 @@ const Navbaar = () => {
   window.addEventListener('scroll',changecolor)
   return (
     <>
-      <div className={`w-full  h-[70px] flex justify-around items-center  text-white text-bold
+      <div className={`w-full  h-[70px] flex justify-around items-center  text-white text-bold para
        ${color ? 'header_bg': 'navbaar'}`}>
         <div className="flex gap-14  pr-48 ">
-          <h2 className="text-[1.3rem]">ExpenseTrackr</h2>
-          <a href="">Add Expense</a>
-          <p>Monthly Expenses</p>
+          <h2 className="text-[1.7rem] pr-16 pt-4 hover:text-green-400 cursor-pointer">ExpenseTrackr</h2>
         </div>
-        <div className="flex gap-20">
+        <div className="flex gap-20 pt-6 paramain">
+          <a href="" className="text-[1.1rem]">Add Expense</a>
+          <a href=""  className="text-[1.1rem]">Monthly Expenses</a>
             <Link to="/LogIn" className="flex" 
             >
-            <PersonIcon/> 
+            <PersonIcon className="profile"/> 
               </Link >
         </div>
       </div>

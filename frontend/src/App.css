@@ -5,7 +5,8 @@
   background-image: linear-gradient(to right, #6747e0, #171031);
 }
 .header_bg {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: #553daab0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -30,11 +31,23 @@
   font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
 }
+.btn{
+  /* transition: all 3s ease; */
+}
 .btn:hover{
   background-color: #714ef5;
   color: white;
-  transition: all 0.8s ease;
+  transition:  all 1s ease-in-out;
 }
-.icon{
-  font-size: 1rem;
+
+.para{
+  font-family: "Poetsen One", sans-serif; 
+}
+.paramain{
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+.profile:hover{
+ transform: scale(1.2);
+ transition: all 0.8s ease;
 }

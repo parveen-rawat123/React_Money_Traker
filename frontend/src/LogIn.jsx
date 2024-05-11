@@ -1,11 +1,12 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink,  } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import './App.css';
 const LogIn = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [LogedIn, setLogedIn] = useState();
   const [showpassword, setshowpassword] = useState(false);
 
@@ -39,7 +40,8 @@ const LogIn = () => {
     console.log(data);
     if (responce.status === 200) {
       toast.error(data.error);
-      navigate("/");
+      // navigate("/");
+      toast.error(responce)
     } else if (responce.status === 401) {
       toast.error(data.error);
     } else if (responce.status === 500) {
@@ -109,9 +111,9 @@ const LogIn = () => {
               >
                 {" "}
                 {showpassword ? (
-                  <VisibilityIcon className="icon" />
+                  <VisibilityIcon className="text-slate-500"/>
                 ) : (
-                  <VisibilityOffIcon className="icon" />
+                  <VisibilityOffIcon className="text-slate-500"/>
                 )}{" "}
               </span>
             </div>

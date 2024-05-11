@@ -1,10 +1,22 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import {  toast } from 'react-toastify'
+import { toast } from "react-toastify";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 const SignUp = () => {
   let [Formdata, setFormdata] = useState({});
   const navigate = useNavigate();
+  const [show, setshow] = useState(false);
+
+  const passwordshow = () => {
+    if (show === false) {
+      setshow(true);
+    } else {
+      setshow(false);
+    }
+  };
+
   const HandleForm = (e) => {
     let val = e.target.value;
     let name = e.target.name;
@@ -27,16 +39,16 @@ const SignUp = () => {
     console.log(data);
     if (responce.status === 201) {
       navigate("/");
-      toast.success('you are successfully registered')
+      toast.success("you are successfully registered");
     } else if (responce.status === 400) {
       toast.info(data.error);
     } else if (responce.status === 409) {
       toast.info(data.error);
-      navigate('/LogIn')
+      navigate("/LogIn");
     } else if (responce.status === 500) {
       toast.error(data.error);
-    }else {
-      toast.error('Unexpected error occurred');
+    } else {
+      toast.error("Unexpected error occurred");
     }
   };
   return (
@@ -91,7 +103,7 @@ const SignUp = () => {
                 name="email"
               />
             </div>
-            <div className="mb-6">
+            <div className="mb-6 relative">
               <label
                 className="block text-gray-700 text-md font-medium mb-1"
                 htmlFor="password"
@@ -101,11 +113,22 @@ const SignUp = () => {
               <input
                 className=" appearance-none border w-full py-2 px-3 text-gray-900 mb-3 leading-tight focus:outline-none focus:ring-blue-500 focus:border-black"
                 id="password"
-                type="password"
+                type={show ? "text" : "password"}
                 placeholder="******************"
                 onChange={HandleForm}
                 name="password"
               />
+              <span
+                className="cursor-pointer absolute right-1 bottom-3  p-[0.39rem]" 
+                onClick={passwordshow}
+              >
+                {" "}
+                {show ? (
+                  <VisibilityIcon className="text-slate-500" />
+                ) : (
+                  <VisibilityOffIcon className="text-slate-500" />
+                )}{" "}
+              </span>
             </div>
             <div className="flex items-center justify-center">
               <button
@@ -117,12 +140,18 @@ const SignUp = () => {
             </div>
             <div className="flex justify-between">
               <p className="text-center mt-5">
-                <Link to={"/LogIn"} className="text-blue-600 text-sm hover:underline">
-                Sign in with your account 
+                <Link
+                  to={"/LogIn"}
+                  className="text-blue-600 text-sm hover:underline"
+                >
+                  Sign in with your account
                 </Link>
               </p>
-              <p className="mt-5"><Link to='' className="text-sm  hover:underline text-blue-600"
-              >Forgot your password? </Link></p>
+              <p className="mt-5">
+                <Link to="" className="text-sm  hover:underline text-blue-600">
+                  Forgot your password?{" "}
+                </Link>
+              </p>
             </div>
           </form>
         </div>

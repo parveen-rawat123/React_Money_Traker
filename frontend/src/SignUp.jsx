@@ -39,7 +39,7 @@ const SignUp = () => {
     console.log(data);
     if (responce.status === 201) {
       navigate("/");
-      toast.success("you are successfully registered");
+      toast.success(data.message);
     } else if (responce.status === 400) {
       toast.info(data.error);
     } else if (responce.status === 409) {

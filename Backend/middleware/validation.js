@@ -1,7 +1,8 @@
-// const express = require("express")
-// const app =  express()
+const router = require("../routes/router");
+const User = require("../models/signUp");
 
-// app.use((req,res,next)=>{
-//   console.log("middle ware connected")
-//   next()
-// });
+
+// is authenticate
+const isAuthenticate = (req,res,next)=>{
+  
+}

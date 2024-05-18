@@ -1,11 +1,10 @@
 // const { JsonWebTokenError } = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const passportLocalMongoose = require("passport-local-mongoose");
 const validate = require("validator");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const secretKey = "your32charactersecretkeygoeshere";
+const bcrypt = require("bcryptjs");
+const secretkey = "your32charactersecretkeygoeshere";
 
 const UserSchema = new Schema({
   username: {
@@ -38,31 +37,27 @@ const UserSchema = new Schema({
   ],
 });
 
-
-UserSchema.pre('save', async function(next){
-this.password= await bcrypt.hash(this.password,12);
-// for run  code
-next()
+UserSchema.pre("save", async function (next) {
+  //  condition if  password not changed only when user changed then it will changed
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 12);
+    // for run  code
+    next();
+  }
 });
-
-
-
 
 UserSchema.methods.generateAuthtoken = async function () {
   try {
-    let token23 = jwt.sign({_id: this._id }, process.env.JWT_TOKEN, {
+    const token = jwt.sign({ _id: this._id }, secretkey, {
       expiresIn: "3d",
     });
-    // add value in token
-    this.tokens =  await this.tokens.concat({ token : token23});
+    this.tokens.push({ token });
     await this.save();
-    console.log(token23)
-    console.log(this.tokens)
-    return token23;
+    return token;
   } catch (err) {
-    res.status(400).json({err: err.message})
-    console.log("error is", err);
-    
+    console.error("Error generating auth token:", err);
+    throw new Error("Could not generate auth token");
   }
 };
+
 module.exports = mongoose.model("User", UserSchema);

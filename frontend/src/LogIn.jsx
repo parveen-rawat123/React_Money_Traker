@@ -1,14 +1,16 @@
-import { Link, NavLink,  } from "react-router-dom";
+import { Link, NavLink, useNavigate} from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import './App.css';
+import Loader from "./assets/Loader"
 const LogIn = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [LogedIn, setLogedIn] = useState();
   const [showpassword, setshowpassword] = useState(false);
+  const [loader , setloader] = useState(false)
 
   const passwordshow = () => {
     if (showpassword === false) {
@@ -35,24 +37,26 @@ const LogIn = () => {
         "content-type": "application/json",
       },
     });
-
+    
     let data = await responce.json();
     console.log(data);
-    if (responce.status === 200) {
-      toast.error(data.error);
-      // navigate("/");
-      toast.error(responce)
+    console.log("responce", responce)
+    if (responce.status === 201) {
+      setloader(true)
+      // toast.success(data.message);
+      toast.success("You are LogedIn");
+      navigate("/");
     } else if (responce.status === 401) {
       toast.error(data.error);
-    } else if (responce.status === 500) {
+    } else if (responce.status === 400) {
       toast.info(data.error);
     } else if (responce.status === 501) {
-      toast.info(data.error);
+      toast.error(data.error);
     } else if (responce.status === 502) {
-      toast.info(data.error);
+      toast.error(data.error);
     }
   };
-
+ 
   return (
     <div>
       <div className="h-screen flex justify-center items-center signup">
@@ -120,8 +124,8 @@ const LogIn = () => {
             <div className="flex items-center justify-center">
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full rounded-full focus:outline-none focus:shadow-outline text-md"
-                type="submit"
-              >
+                type="submit">
+                  {loader ? <Loader/> : ''}
                 Login
               </button>
             </div>

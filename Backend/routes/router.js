@@ -2,7 +2,6 @@ const express = require("express");
 const router = new express.Router();
 const User = require("../models/signUp");
 const bcrypt = require("bcryptjs");
-const cookieParser = require("cookie-parser");
 
 //for regostration
 router.post("/signUp", async (req, res) => {

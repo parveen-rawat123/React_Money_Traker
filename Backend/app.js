@@ -3,31 +3,27 @@ const app = express();
 const port = process.env.PORT || 3000;
 const cors = require("cors");
 const bodyparser = require("body-parser");
-const mongoose = require("mongoose");
 const router = require("./routes/router")
 const flash = require("express-flash");
 const cookieParser = require('cookie-parser');
+const {db} = require("./db/db")
+const dotenv = require("dotenv")
+const transaction = require("./routes/transaction")
 
+dotenv.config({path:"./env"})
 app.use(flash());
 app.use(cors());
 app.use(bodyparser.json());
 app.use(router)
 app.use(cookieParser())
+app.use(express.json())
+db();
 
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/Money", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log(" db Connected!"))
-  .catch(() => console.log(`Error connecting to the database:', error`));
-
-
+app.use("/", transaction)
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
-  console.log(logrequest);
 });
 
 

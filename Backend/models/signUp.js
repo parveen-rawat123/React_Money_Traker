@@ -1,4 +1,3 @@
-// const { JsonWebTokenError } = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const validate = require("validator");

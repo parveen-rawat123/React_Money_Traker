@@ -1,3 +1,7 @@
+body{
+  box-sizing: border-box;
+}
+
 .Homepage {
   background-image: linear-gradient(to right, #6747e0, #171031);
 }
@@ -31,9 +35,7 @@
   font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
 }
-.btn{
-  /* transition: all 3s ease; */
-}
+
 .btn:hover{
   background-color: #714ef5;
   color: white;

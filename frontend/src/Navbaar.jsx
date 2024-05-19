@@ -19,7 +19,7 @@ const Navbaar = () => {
         className={`w-full  h-[70px] flex justify-around items-center  text-white text-bold para
        ${color ? "header_bg" : "navbaar"}`}
       >
-        <div className="flex gap-14  pr-48 ">
+        <div className="flex gap-14  pr-48">
           <h2 className="text-[1.7rem] pr-16 pt-4 hover:text-green-400 cursor-pointer">
             ExpenseTrackr
           </h2>

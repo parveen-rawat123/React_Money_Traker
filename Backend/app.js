@@ -8,7 +8,8 @@ const flash = require("express-flash");
 const cookieParser = require('cookie-parser');
 const {db} = require("./db/db")
 const dotenv = require("dotenv")
-const transaction = require("./routes/transaction")
+const transaction = require("./routes/transactionroute")
+
 
 dotenv.config({path:"./env"})
 app.use(flash());

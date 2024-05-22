@@ -2,10 +2,10 @@ const ExpenseSchema = require("../models/expensemodel")
 
 
 exports.addExpense = async (req, res) => {
-   const { title, amout, category, description, date } = req.body;
+   const { title, amount, category, description, date } = req.body;
    const income = ExpenseSchema({
       title,
-      amout,
+      amount,
       category,
       description,
       date
@@ -33,6 +33,7 @@ exports.getExpense= async (req, res) => {
    try {
       const incomes = await ExpenseSchema.find().sort({ createdAt: -1 });
       res.status(200).json(incomes)
+      res.send("working")
    } catch (error) {
       res.status(500).json({ error: 'server error from get expense' });
    }

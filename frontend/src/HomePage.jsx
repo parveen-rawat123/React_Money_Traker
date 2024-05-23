@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Navbaar from "./Navbaar";
+import Navbaar from "./components/navigation/Navbaar";
 import Section_two from "./Section_two";
 import AOS from 'aos';
 import 'aos/dist/aos.css';

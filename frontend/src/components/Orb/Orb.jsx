@@ -9,7 +9,6 @@ const Orb = () => {
 
 const {width,height} = useWindowSize()
 
-console.log(width,height,"hello")
 
   const moveOrb = keyframes`
        0%{

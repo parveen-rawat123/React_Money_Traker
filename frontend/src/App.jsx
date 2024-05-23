@@ -1,9 +1,9 @@
 
 import './App.css'
 import HomePage from './HomePage'
-import DashBord from './DashBord'
-import SignUp from './SignUp';
-import LogIn from './LogIn';
+import DashBord from './userDashBord'
+import SignUp from './components/auth/SignUp';
+import LogIn from './components/auth/LogIn';
 import {BrowserRouter,Route, Routes,} from "react-router-dom";
 
 function App() {

@@ -4,8 +4,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import './App.css';
-import Loader from "./assets/Loader"
+// import Loader from "./assets/Loader"
 const LogIn = () => {
   const navigate = useNavigate();
   const [LogedIn, setLogedIn] = useState();

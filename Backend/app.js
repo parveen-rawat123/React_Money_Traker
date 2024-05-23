@@ -21,7 +21,7 @@ app.use(express.json())
 db();
 
 
-app.use("/", transaction)
+app.use("/api/v1", transaction)
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

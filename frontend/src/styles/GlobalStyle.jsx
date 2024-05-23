@@ -17,7 +17,8 @@ export const GlobalStyle = createGlobalStyle`
                --color-delete : #FF0000;
              }
          body{
-             font-family: "Poppins", sans-serif;
+             font-family: 'Nunito', sans-serif;
+             font-weight: 700;
              font-size : clamp(1rem , 1.5vw, 1.2rem);
              overflow :hidden;
              color : rgba(34, 34, 96, .6); 

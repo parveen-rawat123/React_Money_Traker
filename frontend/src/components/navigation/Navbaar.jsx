@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import { useState } from "react";
-import "./App.css";
+
 const Navbaar = () => {
   const [color, setcolor] = useState(false);
 

@@ -6,14 +6,12 @@ const Dasboard = () => {
 <DasboardStyled>
     <InnerLayout>
 
-        
+        <h1>hello</h1>
     </InnerLayout>
 </DasboardStyled>
   )
 }
 const DasboardStyled  = styled.div`
-
-
 
 `;
 

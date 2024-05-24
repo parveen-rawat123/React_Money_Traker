@@ -4,12 +4,9 @@ import { useGlobalContext, GlobalProvider } from '../context/GlobalContext';
 import Form from "../form/Form"
 
 
+console.log(GlobalProvider.Income)
+console.log(useGlobalContext)
 const Income = () => {
-
-const {addIncome}= useGlobalContext()
-    console.log(addIncome())
-    console.log(GlobalProvider)
-    console.log(GlobalProvider)
   return (
     <IncomeStyled>
  <InnerLayout>
@@ -17,6 +14,7 @@ const {addIncome}= useGlobalContext()
     <div className="income-content">
         <div className='form-container'></div>
       <div className="income">
+        <p className=' text-2xl text-black'>hello</p>
       <Form/>
         </div>
     </div>

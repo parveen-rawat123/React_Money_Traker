@@ -1,21 +1,16 @@
-import styled from 'styled-components'
-import { InnerLayout } from '../../styles/Layout';
+import styled from "styled-components";
+import { InnerLayout } from "../../styles/Layout";
 
 const Expence = () => {
   return (
-   <ExpenceStyled>
-<InnerLayout>
+    <ExpenceStyled>
+      <InnerLayout>
+        <h1>hello</h1>
+        <p>hii</p>
+      </InnerLayout>
+    </ExpenceStyled>
+  );
+};
+const ExpenceStyled = styled.div``;
 
-
-</InnerLayout>
-   </ExpenceStyled>
-  )
-}
-const ExpenceStyled = styled.div`
-    
-
-`;
-
-
-
-export default Expence
+export default Expence;

@@ -6,18 +6,20 @@ import { useState, useMemo } from "react";
 import Dasboard from "./components/Dashboard/Dasboard";
 import Income from "./components/Incomes/Income";
 import Expence from "./components/Expense/Expence";
-import {GlobalProvider, useGlobalContext} from "./components/context/GlobalContext";
+import { GlobalProvider, useGlobalContext } from "./components/context/GlobalContext";
 
 const DashBord = () => {
-  const [active, setactive] = useState(1); //one is id
+  const [active, setActive] = useState(1); // one is id
 
-const Global = useGlobalContext()
-console.log(Global)
+  // const Global = useGlobalContext();
+  // console.log(Global);
+  // console.log(GlobalProvider);
+
   const orbmenu = useMemo(() => {
     return <Orb />;
   }, []);
-console.log(GlobalProvider)
-  const diplayData = () => {
+
+  const displayData = () => {
     switch (active) {
       case 1:
         return <Dasboard />;
@@ -28,19 +30,19 @@ console.log(GlobalProvider)
       case 4:
         return <Expence />;
       default:
-        return  <Dasboard/>;
+        return <Dasboard />;
     }
   };
 
   return (
     <GlobalProvider>
-    <AppStyled className="App">
-      <MainLayout>
-        {orbmenu}
-        <Navigation active={active} setactive={setactive} />
-        <main>{diplayData}</main>
-      </MainLayout>
-    </AppStyled>
+      <AppStyled className="App">
+        <MainLayout>
+          {orbmenu}
+          <Navigation active={active} setactive={setActive} />
+          <main>{displayData()}</main>
+        </MainLayout>
+      </AppStyled>
     </GlobalProvider>
   );
 };
@@ -51,7 +53,7 @@ const AppStyled = styled.div`
   position: relative;
   main {
     flex: 1;
-    background-color: rgba(252, 246, 249.78);
+    /* background-color: rgba(252, 246, 249.78); */
     border: 3px solid #ffffff;
     backdrop-filter: blur(4.5px);
     border-radius: 32px;
@@ -61,5 +63,7 @@ const AppStyled = styled.div`
       width: 0;
     }
   }
+
 `;
+
 export default DashBord;

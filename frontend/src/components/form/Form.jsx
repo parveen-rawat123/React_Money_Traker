@@ -6,7 +6,7 @@ import { useGlobalContext } from '../context/GlobalContext';
 import Button from "../Button/Button";
 import {plus} from "../../utils/Icons"
 const Form = () => {
-    const { addIncome } = useGlobalContext();
+    const { addIncome ,getIncome} = useGlobalContext();
 
     const [inputState, setInputState] = useState({
         title: '',
@@ -19,11 +19,13 @@ const Form = () => {
     const { title, amount, date, category, description } = inputState;
 
     const handleInput = (e) => {
+        getIncome()
         let name = e.target.name;
         let val = e.target.value;
         setInputState({
             ...inputState,
             [name]: val
+
         });
     };
 
@@ -108,7 +110,7 @@ const Form = () => {
                     icon={plus}
                     bPad={'.8rem 1.6rem'}
                     bRed={'30px'}
-                    bg={'var(--color-accent)'}
+                    bg={'red'}
                     color={'#fff'}
                 />
             </div>
@@ -156,7 +158,7 @@ const FormStyled = styled.form`
             button{
                 box-shadow: 0px 1px 15px rgba(0,0,0,0.06);
                &:hover{
-                   background: var(--color-green) !important;   
+                   background: yellow !important;   
                 }
             }
         }

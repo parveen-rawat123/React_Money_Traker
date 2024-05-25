@@ -1,4 +1,4 @@
-import { Icon } from '@mui/material'
+
 import styled from 'styled-components'
 
 const Btn = ({ name, icon, onClick, bg, bPad, color, bRed }) => {
@@ -10,8 +10,8 @@ const Btn = ({ name, icon, onClick, bg, bPad, color, bRed }) => {
             color: color
         }} onClick={onClick}
         >
-          {icon && <icons />}
-            {name}
+          {icon && icon}
+          {name}
         </ButtonStyled>
     )
 }

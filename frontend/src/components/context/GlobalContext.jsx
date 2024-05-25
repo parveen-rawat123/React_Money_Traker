@@ -4,20 +4,20 @@ const BASE_URL = "http://localhost:3000/api/v1/";
 const GlobalContext = createContext();
 import { toast } from "react-toastify";
 export const GlobalProvider = ({ children }) => {
-  const [income, setIncomes] = useState([]);
+  const [income, setIncome] = useState([]);
   const [expence, setexpences] = useState([]);
   const [error, seterror] = useState(null);
 
   const addIncome = async (income) => {
     try {
-      const responce = await axios.post(`${BASE_URL}add-income`, income ,{
+      const responce = await axios.post(`${BASE_URL}add-income`, income, {
         headers: {
           "content-type": "application/json",
         },
       })
-      
+
       console.log("responce jai ", responce)
-      console.log("income",income)
+      console.log("income", income)
       if (responce.status === 400) {
         console.log(responce.error)
         toast.error(responce.error)
@@ -26,15 +26,28 @@ export const GlobalProvider = ({ children }) => {
       } else if (responce.status === 200) {
         toast.success(responce.message)
       }
-      setIncomes([...responce])
-      console.log("after",income)
+      // setIncome([...responce])
+      console.log("after", income)
     } catch (err) {
       seterror(err);
     }
   };
 
+  const getIncome = async () => {
+    const responce = await axios.get(`${BASE_URL}get-income`)
+    setIncome(responce.data)
+    console.log(responce)
+    console.log(responce.data)
+
+  }
+
+
   return (
-    <GlobalContext.Provider value={{ income, expence, error, addIncome }
+    <GlobalContext.Provider value={{ 
+      addIncome,
+      getIncome,
+      income
+     }
     }>
       {children}
     </GlobalContext.Provider>

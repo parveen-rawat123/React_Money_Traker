@@ -23,7 +23,7 @@ import {
 import Button from "../Button/Button";
 
 const IncomeItem = ({
-  id,
+  id, 
   title,
   amount,
   date,

@@ -6,7 +6,7 @@ import { useState, useMemo } from "react";
 import Dasboard from "./components/Dashboard/Dasboard";
 import Income from "./components/Incomes/Income";
 import Expence from "./components/Expense/Expence";
-import { GlobalProvider, useGlobalContext } from "./components/context/GlobalContext";
+import { GlobalProvider } from "./components/context/GlobalContext";
 
 const DashBord = () => {
   const [active, setActive] = useState(1); // one is id

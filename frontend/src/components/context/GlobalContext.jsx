@@ -15,7 +15,6 @@ export const GlobalProvider = ({ children }) => {
           "content-type": "application/json",
         },
       })
-
       console.log("responce jai ", responce)
       console.log("income", income)
       if (responce.status === 400) {
@@ -36,17 +35,26 @@ export const GlobalProvider = ({ children }) => {
   const getIncome = async () => {
     const responce = await axios.get(`${BASE_URL}get-income`)
     setIncome(responce.data)
-    console.log(responce)
-    console.log(responce.data)
-
   }
+
+const DeleteIncome = async (id)=>{
+  try {
+    const responce =  await axios.delete(`${BASE_URL}delete-income/${id}`)
+    console.log(responce)
+  console.log('Delete item with id:', id);
+  } catch (error) {
+    console.log("delete income error", error)
+  }
+}
+
 
 
   return (
     <GlobalContext.Provider value={{ 
       addIncome,
       getIncome,
-      income
+      income,
+      DeleteIncome
      }
     }>
       {children}

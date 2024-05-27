@@ -33,6 +33,7 @@ const Form = () => {
         e.preventDefault();
         console.log(inputState);
         addIncome(inputState)
+        getIncome()
     };
 
     return (
@@ -96,21 +97,17 @@ const Form = () => {
                     onChange={handleInput}
                     placeholder='add a refrence'
                     cols={30}
-
                 >
-
                 </textarea>
             </div>
-
-
-
+            
             <div className="submit-btn">
                 <Button
                     name={'Add income'}
                     icon={plus}
                     bPad={'.8rem 1.6rem'}
                     bRed={'30px'}
-                    bg={'red'}
+                    bg={'green'}
                     color={'#fff'}
                 />
             </div>
@@ -146,7 +143,6 @@ const FormStyled = styled.form`
         }
         .selects{
             display: flex;
-            justify-content: flex-end;
             select{
                 color: rgba(34,34,96,0.4);
                 &:focus, &:active{

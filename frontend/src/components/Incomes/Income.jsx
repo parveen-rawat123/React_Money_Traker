@@ -8,10 +8,10 @@ import IncomeItem from "../incomeitem/IncomeItem";
 // import GlobalStyle  from "../../styles/GlobalStyle"
 
 const Income = () => {
-  const { addIncome, getIncome, income } = useGlobalContext();
+  const { addIncome, getIncome, income , DeleteIncome} = useGlobalContext();
   useEffect(()=>{
         getIncome()
-  },[]);
+  },[income]);
   
   return (
     <IncomeStyled>
@@ -23,7 +23,7 @@ const Income = () => {
           </div>
           <div className="income">
             {income.map((item)=>{
-            const {_id,title,amount, date, category, description,indicaterColor} = item ; 
+            const {_id,title,amount, date, category, description,} = item ; 
           return  <IncomeItem  
           key = {_id}
           id={_id}
@@ -31,7 +31,8 @@ const Income = () => {
           description = {description}
           amount = {amount} date = {date}
           category = {category}
-          // indicaterColor :var ( --color-delete)
+          indicaterColor={"green"}
+          deleteitem= {DeleteIncome}
          />
             })}
           </div>
@@ -41,6 +42,14 @@ const Income = () => {
   );
 };
 const IncomeStyled = styled.div`
+           display: flex;
+           .income-content{
+            display: flex;
+            gap: 2rem;
+           }
+           .income{
+            flex: 1;
 
+           }
 `;
 export default Income;

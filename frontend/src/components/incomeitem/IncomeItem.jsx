@@ -18,7 +18,7 @@ import {
   trash,
   tv,
   users,
-  yt,
+ yt,
 } from "../../utils/Icons";
 import Button from "../Button/Button";
 

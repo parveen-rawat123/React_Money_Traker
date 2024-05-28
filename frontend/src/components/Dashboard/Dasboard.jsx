@@ -5,7 +5,6 @@ const Dasboard = () => {
   return (
 <DasboardStyled>
     <InnerLayout>
-
         <h1>hello</h1>
     </InnerLayout>
 </DasboardStyled>

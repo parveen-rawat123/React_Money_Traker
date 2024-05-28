@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useState, createContext } from "react";
+import  { useContext, useState, createContext } from "react";
 const BASE_URL = "http://localhost:3000/api/v1/";
 const GlobalContext = createContext();
 import { toast } from "react-toastify";
@@ -25,11 +25,10 @@ export const GlobalProvider = ({ children }) => {
       } else if (responce.status === 200) {
         toast.success(responce.message)
       }
-      // setIncome([...responce])
-      console.log("after", income)
     } catch (err) {
       seterror(err);
     }
+    getIncome()
   };
 
   const getIncome = async () => {
@@ -45,6 +44,15 @@ const DeleteIncome = async (id)=>{
   } catch (error) {
     console.log("delete income error", error)
   }
+  getIncome()
+}
+
+const totalIncome = ()=>{
+  let total = 0
+  income.forEach((income)=>{
+    total += income.amount
+  })
+  return total;
 }
 
 
@@ -54,7 +62,8 @@ const DeleteIncome = async (id)=>{
       addIncome,
       getIncome,
       income,
-      DeleteIncome
+      DeleteIncome,
+      totalIncome
      }
     }>
       {children}

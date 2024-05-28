@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../Button/Button";
 import {
   bitcoin,
   book,
@@ -20,7 +21,6 @@ import {
   users,
  yt,
 } from "../../utils/Icons";
-import Button from "../Button/Button";
 
 const IncomeItem = ({
   id, 
@@ -100,7 +100,7 @@ const IncomeItem = ({
             <Button
               icon={trash}
               bPad={".7rem 0.8rem"}
-              bRad={""}
+              bRad={"30px"}
               bg={"black"}
               hColor={"blue"}
               color={"#fff"}
@@ -115,11 +115,13 @@ const IncomeItem = ({
 
 const IncomeItemStyled = styled.div`
   background: #fcf6f9;
+  margin: 10px 40px;
+  height: 5.3rem;
+  width: 35rem;
   border: 2px solid #ffffff;
   box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.6);
   border-radius: 20px;
   padding: 1rem;
-  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;

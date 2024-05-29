@@ -13,7 +13,7 @@ const DashBord = () => {
 
   // const Global = useGlobalContext();
   // console.log(Global);
-  // console.log(GlobalProvider);
+  // console.log(GlobalProvider); 
 
   const orbmenu = useMemo(() => {
     return <Orb />;

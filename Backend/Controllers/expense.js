@@ -2,26 +2,25 @@ const ExpenseSchema = require("../models/expensemodel")
 
 
 exports.addExpense = async (req, res) => {
+   console.log(req.body)
    const { title, amount, category, description, date } = req.body;
-   const income = ExpenseSchema({
+   const expense = ExpenseSchema({
       title,
       amount,
       category,
       description,
       date
    })
-   console.log(income)
    try {
       if (!title || !category || !description || !date) {
          return res.status(400).json({ error: 'All field is required' });
       };
-      if (amout <= 0 || !amout === 'number') {
+      if (amount <= 0 || !amount === 'number') {
          return res.status(400).json({ error: 'Amout must be positive number' })
       };
-      const result = await income.save()
+      const result = await expense.save()
       res.status(200).json({ message: 'expense added' })
       console.log(result)
-      consol.log(income)
    } catch (error) {
       res.status(500).json({ error: 'server error from add expense' });
       consol.log(`post expense route error${error}`)
@@ -29,11 +28,10 @@ exports.addExpense = async (req, res) => {
 };
 
 
-exports.getExpense= async (req, res) => {
+exports.getExpense = async (req, res) => {
    try {
       const incomes = await ExpenseSchema.find().sort({ createdAt: -1 });
       res.status(200).json(incomes)
-      res.send("working")
    } catch (error) {
       res.status(500).json({ error: 'server error from get expense' });
    }
@@ -43,7 +41,7 @@ exports.deleteExpense = async (req, res) => {
    const { id } = req.params;
    console.log(req.params);
    ExpenseSchema.findByIdAndDelete(id)
-      .then((income) => {
+      .then((expense) => {
          res.status(200).json({ messagem: 'expense deleted' })
       })
       .catch((error) => {

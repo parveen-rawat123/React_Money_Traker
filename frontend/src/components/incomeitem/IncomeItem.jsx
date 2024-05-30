@@ -21,6 +21,7 @@ import {
   users,
  yt,
 } from "../../utils/Icons";
+import { DateFormat } from "../../utils/DateFormate";
 
 const IncomeItem = ({
   id, 
@@ -90,7 +91,7 @@ const IncomeItem = ({
               {dollar} {amount}
             </p>
             <p>
-              {calender} {date}
+              {calender} {DateFormat(date)}
             </p>
             <p>
               {comment} {description}

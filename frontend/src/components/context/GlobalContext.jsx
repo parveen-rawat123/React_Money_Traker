@@ -29,6 +29,7 @@ export const GlobalProvider = ({ children }) => {
       }
     } catch (err) {
       seterror(err);
+      console.log(error)
     }
     getIncome()
   };
@@ -44,6 +45,7 @@ export const GlobalProvider = ({ children }) => {
       console.log(responce)
       console.log('Delete item with id:', id);
     } catch (error) {
+      seterror(error)
       console.log("delete income error", error)
     }
     getIncome()

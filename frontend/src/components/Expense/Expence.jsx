@@ -25,7 +25,7 @@ const Expense = () => {
         </div>
         <div className="income">
           {expense.map((item) => {
-            const { _id, title, amount, date, category, description } = item;
+            const { _id, title, amount, date, category, description,type } = item;
             return (
               <IncomeItem
                 key={_id}
@@ -34,6 +34,7 @@ const Expense = () => {
                 description={description}
                 amount={amount}
                 date={date}
+                type={type}
                 category={category}
                 indicaterColor={"green"}
                 deleteitem={DeleteExpense}

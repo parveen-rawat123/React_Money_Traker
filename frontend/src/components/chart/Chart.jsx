@@ -1,71 +1,71 @@
 import styled from "styled-components";
 import { Line } from "react-chartjs-2";
 import { useGlobalContext } from ".././context/GlobalContext";
-import {DateFormat} from "../../utils/DateFormate";
+import { DateFormat } from "../../utils/DateFormate";
 import {
-    Chart as ChartJs,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-    ArcElement,
+  Chart as ChartJs,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
 } from "chart.js";
 
 ChartJs.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-    ArcElement
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
 );
 
 const Chart = () => {
-    const { income, expense } = useGlobalContext();
-    console.log(income, "income");
-    console.log(expense, "income");
+  const { income, expense } = useGlobalContext();
+  console.log(income, "income");
+  console.log(expense, "income");
 
-    const data = {
-        labels: income.map((inc) => {
-            const { date } = inc
-            return DateFormat(date)
-        }),
-        datasets: [
-            {
-                label: "Income",
-                data: [
-                    ...income.map((income) => {
-                        const { amount } = income;
-                        return amount;
-                    })
-                ],
-                backgroundColor: "green",
-                tension : .2
-            },
-            {
-                label: "Expense",
-                data: [
-                    ...expense.map((expense) => {
-                        const { amount } = expense;
-                        return amount;
-                    }),
-                ],
-                backgroundColor: "red",
-                tension : .2
-            },
+  const data = {
+    labels: income.map((inc) => {
+      const { date } = inc;
+      return DateFormat(date);
+    }),
+    datasets: [
+      {
+        label: "Income",
+        data: [
+          ...income.map((income) => {
+            const { amount } = income;
+            return amount;
+          }),
         ],
-    };
+        backgroundColor: "green",
+        tension: 0.2,
+      },
+      {
+        label: "Expense",
+        data: [
+          ...expense.map((expense) => {
+            const { amount } = expense;
+            return amount;
+          }),
+        ],
+        backgroundColor: "red",
+        tension: 0.2,
+      },
+    ],
+  };
 
-    return (
-        <ChartStyled>
-            <Line data={data} />
-        </ChartStyled>
-    );
+  return (
+    <ChartStyled>
+      <Line data={data} />
+    </ChartStyled>
+  );
 };
 
 const ChartStyled = styled.div`

@@ -2,7 +2,14 @@ import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import { useState } from "react";
 
-const Navbaar = () => {
+// export const changeIcone = ()=>{
+//   const  [icone,seticone ] = useState(false)
+//   const changecolor = ()=>{
+//     seticone(true)
+//   } 
+// };
+
+export const Navbaar = () => {
   const [color, setcolor] = useState(false);
 
   const changecolor = () => {
@@ -35,7 +42,7 @@ const Navbaar = () => {
             <PersonIcon className="profile" />
           </Link>
         </div>
-      </div>
+      </div> 
     </>
   );
 };

@@ -18,15 +18,6 @@ export const GlobalProvider = ({ children }) => {
         },
       })
       console.log("responce jai ", responce)
-      console.log("income", income)
-      if (responce.status === 400) {
-        console.log(responce.error)
-        toast.error(responce.error)
-      } else if (responce.status === 500) {
-        toast.error(responce.error)
-      } else if (responce.status === 200) {
-        toast.success(responce.message)
-      }
     } catch (err) {
       seterror(err);
       console.log(error)
@@ -116,7 +107,7 @@ const transactionHistory = ()=>{
   history.sort((a,b)=>{
  return new Date(b.createdAt) - new Date(a.createdAt) 
   })
-  return history
+  return history.slice(0,3)
 }
 
   return (
@@ -132,7 +123,9 @@ const transactionHistory = ()=>{
       totalExpense,
       expense,
       totalBalance,
-      transactionHistory 
+      transactionHistory,
+      error,
+      seterror
     }
     }>
       {children}

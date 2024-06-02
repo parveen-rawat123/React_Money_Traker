@@ -11,7 +11,7 @@ const dotenv = require("dotenv")
 const transaction = require("./routes/transactionroute")
 
 
-dotenv.config({path:"./env"})
+dotenv.config({path:"./.env"})
 app.use(flash());
 app.use(cors());
 app.use(bodyparser.json());

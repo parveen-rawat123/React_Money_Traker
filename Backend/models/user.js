@@ -26,6 +26,14 @@ const UserSchema = new Schema({
     required: true,
     minlength: 6,
   },
+  income : {
+    type : Schema.Types.ObjectId,
+    ref : "income",
+  },
+  expense : {
+    type : Schema.Types.ObjectId,
+    ref : "expense",
+  },
   tokens: [
     {
       token: {
@@ -33,7 +41,7 @@ const UserSchema = new Schema({
         required: true,
       },
     },
-  ],
+  ], 
 });
 
 UserSchema.pre("save", async function (next) {

@@ -9,7 +9,7 @@ const LogIn = () => {
   const navigate = useNavigate();
   const [LogedIn, setLogedIn] = useState();
   const [showpassword, setshowpassword] = useState(false);
-  const [loader , setloader] = useState(false)
+  // const [loader , setloader] = useState(false)
 
   const passwordshow = () => {
     if (showpassword === false) {
@@ -41,8 +41,7 @@ const LogIn = () => {
     console.log(data);
     console.log("responce", responce)
     if (responce.status === 201) {
-      setloader(true)
-      // toast.success(data.message);
+      // setloader(true)
       toast.success("You are LogedIn");
       navigate("/");
     } else if (responce.status === 401) {
@@ -124,7 +123,7 @@ const LogIn = () => {
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full rounded-full focus:outline-none focus:shadow-outline text-md"
                 type="submit">
-                  {loader ? <Loader/> : ''}
+                 
                 Login
               </button>
             </div>

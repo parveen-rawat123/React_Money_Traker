@@ -19,12 +19,12 @@ import {
   trash,
   tv,
   users,
- yt,
+  yt,
 } from "../../utils/Icons";
 import { DateFormat } from "../../utils/DateFormate";
 
 const IncomeItem = ({
-  id, 
+  id,
   title,
   amount,
   date,

@@ -27,8 +27,6 @@ ChartJs.register(
 
 const Chart = () => {
   const { income, expense } = useGlobalContext();
-  console.log(income, "income");
-  console.log(expense, "income");
 
   const data = {
     labels: income.map((inc) => {
@@ -71,10 +69,10 @@ const Chart = () => {
 const ChartStyled = styled.div`
   background: #fcf6f9;
   border: 2px solid #ffffff;
-  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   border-radius: 20px;
-  height: 100%;
+  /* height: 100%; */
 `;
 
 export default Chart;

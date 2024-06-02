@@ -36,12 +36,8 @@ const LogIn = () => {
         "content-type": "application/json",
       },
     });
-    
     let data = await responce.json();
-    console.log(data);
-    console.log("responce", responce)
     if (responce.status === 201) {
-      // setloader(true)
       toast.success("You are LogedIn");
       navigate("/");
     } else if (responce.status === 401) {

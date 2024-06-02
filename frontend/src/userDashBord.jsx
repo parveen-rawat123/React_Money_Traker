@@ -51,9 +51,10 @@ const AppStyled = styled.div`
   height: 100vh;
   background-image: url(bg.png);
   position: relative;
+  overflow: hidden;
   main {
-    flex: 1;
-    /* background-color: rgba(252, 246, 249.78); */
+    flex: 1;   
+    background-color: rgba(252, 246, 249.78);
     border: 3px solid #ffffff;
     backdrop-filter: blur(4.5px);
     border-radius: 32px;

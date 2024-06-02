@@ -120,7 +120,7 @@ const IncomeItemStyled = styled.div`
   height: 5.3rem;
   width: 35rem;
   border: 2px solid #ffffff;
-  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   padding: 1rem;
   display: flex;

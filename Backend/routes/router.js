@@ -9,7 +9,7 @@ router.post("/signUp", async (req, res) => {
   console.log(req.body);
   //if these value is missing then it will work
   if (!username || !email || !password) {
-    res.status(400).json({ error: "Fill the all Details" });
+    res.status(400).json({ error: "All field is required" });
   } else {
     try {
       const preuser = await User.findOne({ email: email });
@@ -37,7 +37,7 @@ router.post("/signUp", async (req, res) => {
 router.post("/login", async (req, res) => {
   let { email, password } = req.body;
   if (!email || !password) {
-    return res.status(400).json({ error: "Fill in all details" });
+    return res.status(400).json({ error: "All field is required" });
   }
   try {
     let finduser = await User.findOne({ email: email });
@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
       if (!isMatch) {
         res
           .status(401)
-          .json({ error: "invalid details password not matched " });
+          .json({ error: "Password not matched " });
       } else {
         const token = await finduser.generateAuthtoken();
         console.log(token);
@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
         // res.status(201).json({ message: "user authenticate" });
       }
     } else {
-      res.status(502).json({ error: "user email invalid" });
+      res.status(502).json({ error: "User email invalid" });
     }
   } catch (error) {
     res.status(501).json({ error: error.message });

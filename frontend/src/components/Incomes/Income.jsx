@@ -3,13 +3,30 @@ import { useGlobalContext } from "../context/GlobalContext";
 import Form from "../form/IncomeForm";
 import { useEffect } from "react";
 import IncomeItem from "../incomeitem/IncomeItem";
-// import {InnerLayout} from "../../styles/GlobalStyle"
-// import GlobalStyle  from "../../styles/GlobalStyle"
+import { toast } from "react-toastify";
 
 const Income = () => {
-  const { addIncome, getIncome, income, DeleteIncome, totalIncome } =
+  const { getIncome, income, DeleteIncome, totalIncome, tost, error, delet } =
     useGlobalContext();
-    
+
+  useEffect(() => {
+    if (tost) {
+      toast.success(tost);
+    }
+  }, [tost]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (delet) {
+      toast.info(delet);
+    }
+  }, [delet]);
+
   useEffect(() => {
     getIncome();
   }, []);

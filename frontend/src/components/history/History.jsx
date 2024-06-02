@@ -39,9 +39,13 @@ const HistoryStyled = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-       }
-
-
+      }
+      h2{
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: gray;
+        margin: 0;
+      } 
 `;
 
 export default History

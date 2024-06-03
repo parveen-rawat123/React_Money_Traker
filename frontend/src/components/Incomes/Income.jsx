@@ -6,24 +6,37 @@ import IncomeItem from "../incomeitem/IncomeItem";
 import { toast } from "react-toastify";
 
 const Income = () => {
-  const { getIncome, income, DeleteIncome, totalIncome, tost, error, delet } =
-    useGlobalContext();
-
-  useEffect(() => {
-    if (tost) {
-      toast.success(tost);
-    }
-  }, [tost]);
+  const {
+    getIncome,
+    income,
+    DeleteIncome,
+    totalIncome,
+    tost,
+    error,
+    delet,
+    seterror,
+    settost,
+    setdelet,
+  } = useGlobalContext();
 
   useEffect(() => {
     if (error) {
       toast.error(error);
+      seterror('');
     }
   }, [error]);
 
   useEffect(() => {
+    if (tost) {
+      toast.success(tost);
+      settost('')
+    }
+  }, [tost]);
+
+  useEffect(() => {
     if (delet) {
       toast.info(delet);
+      setdelet('')
     }
   }, [delet]);
 

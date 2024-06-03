@@ -6,33 +6,30 @@ const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
   const [income, setIncome] = useState([]);
   const [expense, setexpences] = useState([]);
-  const [tost , settost] = useState([]);
-  const [error, seterror] = useState([]);
-  const [delet, setdelet] = useState([]);
-
+  const [tost, settost] = useState('');
+  const [error, seterror] = useState('');
+  const [delet, setdelet] = useState('');
 
   //income fucntion
   const addIncome = async (income) => {
-      const response = await fetch(`${BASE_URL}add-income`,{
-        method : "POST",
-        body : JSON.stringify(income),
-        headers: {
-          "content-type": "application/json",
-        },
-      });
-      const data = await response.json()
-      console.log(data)
-      console.log(response, "response");
-      if (response.status === 200) {
-        settost(data.message)
-      } else if (response.status === 400) {
-        seterror(data.error)
-      } else if (response.status === 500) {
-        seterror(data.error)
-      }
+    const response = await fetch(`${BASE_URL}add-income`, {
+      method: "POST",
+      body: JSON.stringify(income),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    const data = await response.json()
+    if (response.status === 200) {
+      settost(data.message)
+    } else if (response.status === 400) {
+      seterror(data.error)
+    } else if (response.status === 500) {
+      seterror(data.error)
+    }
     getIncome();
   };
-  
+
 
   const getIncome = async () => {
     const responce = await axios.get(`${BASE_URL}get-income`)
@@ -43,7 +40,7 @@ export const GlobalProvider = ({ children }) => {
     try {
       const responce = await axios.delete(`${BASE_URL}delete-income/${id}`)
       console.log(responce)
-      if(responce.status === 200){
+      if (responce.status === 201) {
         setdelet(responce.data.message)
       }
     } catch (error) {
@@ -68,13 +65,11 @@ export const GlobalProvider = ({ children }) => {
           "content-type": "application/json",
         },
       })
-      console.log(responce)
-      console.log(responce.data)
     } catch (err) {
       console.log(err)
     }
     getExpense()
-  };  
+  };
 
   const getExpense = async () => {
     const responce = await axios.get(`${BASE_URL}get-expense`)
@@ -100,17 +95,17 @@ export const GlobalProvider = ({ children }) => {
     return total;
   }
 
-const totalBalance = ()=>{
-  return totalIncome() - totalExpense()
-}
+  const totalBalance = () => {
+    return totalIncome() - totalExpense()
+  }
 
-const transactionHistory = ()=>{
-  const history = [...income, ...expense]
-  history.sort((a,b)=>{
- return new Date(b.createdAt) - new Date(a.createdAt) 
-  })
-  return history.slice(0,3)
-}
+  const transactionHistory = () => {
+    const history = [...income, ...expense]
+    history.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt)
+    })
+    return history.slice(0, 3)
+  }
 
   return (
     <GlobalContext.Provider value={{
@@ -126,9 +121,12 @@ const transactionHistory = ()=>{
       expense,
       totalBalance,
       transactionHistory,
+      settost,
       tost,
       error,
-      delet
+      delet,
+      seterror,
+      setdelet
     }
     }>
       {children}

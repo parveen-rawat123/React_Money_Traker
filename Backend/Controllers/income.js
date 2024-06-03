@@ -37,13 +37,13 @@ exports.getIncome = async (req, res) => {
 exports.deleteIncome = async (req, res) => {
    try {
       const { id } = req.params;
-     let deleteIncome =  IncomeSchema.findByIdAndDelete(id)     
-     if(deleteIncome){
-        res.status(200).json({message : "Income Deleted"})
+     let deleteIncome = await  IncomeSchema.findByIdAndDelete(id)     
+     if(!deleteIncome){
         console.log("this is big error ",deleteIncome)
-     }else{
-      console.log("income not deleted")
-     }
+        res.status(404).json({ error : "Income not Deleted"})
+      }
+      res.status(201).json({ message : "Income  Deleted"})
+
    } catch (error) {
       res.status(500).json({error : "Income  not deleted", error})
       console.log(error)

@@ -3,15 +3,47 @@ import { useGlobalContext } from "../context/GlobalContext";
 import IncomeItem from "../incomeitem/IncomeItem";
 import ExpenseForm from "../form/ExpenseForm";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const Expense = () => {
-  const { getExpense, expense, DeleteExpense, totalExpense } =
-  useGlobalContext();
-   useEffect(()=>{
-    getExpense()
-   },[]);
-   
-   //3:35
+  const {
+    getExpense,
+    expense,
+    DeleteExpense,
+    totalExpense,
+    tost,
+    error,
+    delet,
+    seterror,
+    settost,
+    setdelet,
+  } = useGlobalContext();
+
+  useEffect(() => {
+    if (tost) {
+      toast.success(tost);
+      settost("");
+    }
+  }, [tost]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      seterror('')
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (delet) {
+      toast.info(delet);
+      setdelet('')
+    }
+  }, [delet]);
+
+  useEffect(() => {
+    getExpense();
+  }, []);
+
   return (
     <ExpenseStyled>
       <h1>Expenses</h1>
@@ -25,7 +57,8 @@ const Expense = () => {
         </div>
         <div className="income">
           {expense.map((item) => {
-            const { _id, title, amount, date, category, description,type } = item;
+            const { _id, title, amount, date, category, description, type } =
+              item;
             return (
               <IncomeItem
                 key={_id}

@@ -74,9 +74,9 @@ const Dasboard = () => {
 const DasboardStyled = styled.div`
   padding: 1rem;
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    color: gray;
+    color: black;
     padding-bottom: 0.3rem;
   }
   .srats-con {

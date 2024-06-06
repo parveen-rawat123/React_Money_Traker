@@ -9,7 +9,9 @@ const UserSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
     trim: true,
+    lowercase: true
   },
   email: {
     type: String,
@@ -26,13 +28,13 @@ const UserSchema = new Schema({
     required: true,
     minlength: 6,
   },
-  income : {
-    type : Schema.Types.ObjectId,
-    ref : "income",
+  income: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "income",
   },
-  expense : {
-    type : Schema.Types.ObjectId,
-    ref : "expense",
+  expense: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "expense",
   },
   tokens: [
     {
@@ -41,7 +43,7 @@ const UserSchema = new Schema({
         required: true,
       },
     },
-  ], 
+  ],
 });
 
 UserSchema.pre("save", async function (next) {

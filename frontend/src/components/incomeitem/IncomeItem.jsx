@@ -101,7 +101,7 @@ const IncomeItem = ({
             <Button
               icon={trash}
               bPad={".7rem 0.8rem"}
-              bRad={"30px"}
+              bRed={"30px"}
               bg={"black"}
               hColor={"blue"}
               color={"#fff"}
@@ -168,9 +168,13 @@ const IncomeItemStyled = styled.div`
       .text {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 2rem;
         color: black;
         opacity: 0.8;
+      }
+      .btn{
+        position: relative;
+        bottom: 15px;
       }
     }
   }

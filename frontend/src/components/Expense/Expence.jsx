@@ -11,21 +11,22 @@ const Expense = () => {
     expense,
     DeleteExpense,
     totalExpense,
-    tost,
+    message,
     error,
-    delet,
+    deletMessage,
     seterror,
-    settost,
-    setdelet,
+    setmessage,
+    setdeletMessage,
   } = useGlobalContext();
 
   useEffect(() => {
-    if (tost) {
-      toast.success(tost);
-      settost("");
+    if (message) {
+      toast.success(message);
+      setmessage("");
     }
-  }, [tost]);
+  }, [message]);
 
+  
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -33,12 +34,14 @@ const Expense = () => {
     }
   }, [error]);
 
+
   useEffect(() => {
-    if (delet) {
-      toast.info(delet);
-      setdelet('')
+    if (deletMessage) {
+      toast.info(deletMessage);
+      setdeletMessage('')
     }
-  }, [delet]);
+  }, [deletMessage]);
+
 
   useEffect(() => {
     getExpense();

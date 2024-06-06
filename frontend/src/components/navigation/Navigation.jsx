@@ -27,8 +27,7 @@ const Navogation = ({ active, setactive }) => {
         </ul>
         <div className="bottom-nav">
           <ul>
-            <li>{signout}</li>
-            <li>Sing Out</li>
+            <li> {signout} Sing Out</li>
           </ul>
         </div>
       </Navstyle>
@@ -109,11 +108,6 @@ const Navstyle = styled.nav`
       height: 100%;
       background-color: #222260;
       border-radius: 0 10px 10px 0;
-     }
-     .bottom-nav{
-      display: flex;
-      background-color: #222260;
-      flex-direction: row;
      }
   }
 `;

@@ -1,34 +1,39 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
 const cors = require("cors");
-const bodyparser = require("body-parser");
-const router = require("./routes/router")
-const flash = require("express-flash");
 const cookieParser = require('cookie-parser');
-const {db} = require("./db/db")
-const dotenv = require("dotenv")
-const transaction = require("./routes/transactionroute")
 
+app.use(cors({
+  origin : process.env.CORS_OROGIN
+}));
 
-dotenv.config({path:"./.env"})
-app.use(flash());
-app.use(cors());
-app.use(bodyparser.json());
-app.use(router)
+//for json responce
+app.use(express.json({
+  limit : "16kb"
+}));
+
+//for req url 
+app.use(express.urlencoded({
+  extended : true,
+  limit : "16kb"
+}));
+
+app.use(express.static("public"));
+
 app.use(cookieParser())
-app.use(express.json())
-db();
 
 
-app.use("/api/v1", transaction)
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+const transactionRouter = require("./routes/transaction.routes")
+const userRouter = require("./routes/user.routes")
 
 
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+app.use("/api/v1/user", userRouter)
+app.use("/api/v2/transaction", transactionRouter)
+
+
+
+
+module.exports = app
+
+

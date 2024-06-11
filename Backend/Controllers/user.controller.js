@@ -6,13 +6,13 @@ const APIResponse = require("../utils/Apiresponse.js")
 
 
 const generateAccessRefreshToken = async (user_id) => {
-   
+
   const user = await User.findById(user_id)
   const AccessToken = user.generateAccessToken()
   const RefreshToken = user.generateAccessToken()
-  
+
   user.refreshToken = RefreshToken
-  return {AccessToken, RefreshToken}
+  return { AccessToken, RefreshToken }
 };
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -81,9 +81,13 @@ const logInUser = asyncHandler(async (req, res) => {
     throw new ApiError(402, "password not valid")
   }
 
-  const {AccessToken, RefreshToken} = generateAccessRefreshToken(finduser._id)
+  const { AccessToken, RefreshToken } = generateAccessRefreshToken(finduser._id)
 
-   return 
+  return res
+    .status(200)
+    .cookie("AccessToken", AccessToken
+      .cookie("RefreshToken", RefreshToken)
+    )
 });
 
 

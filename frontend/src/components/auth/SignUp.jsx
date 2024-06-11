@@ -4,6 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { toast } from "react-toastify";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
 const SignUp = () => {
   let [Formdata, setFormdata] = useState({});
   const navigate = useNavigate();
@@ -26,15 +27,17 @@ const SignUp = () => {
     });
   };
 
+console.log("formadat ",Formdata)
   const SubmitForm = async (e) => {
     e.preventDefault();
-    const responce = await fetch("http://localhost:3000/signUp", {
+    const responce = await fetch("http://localhost:3000/api/v1/user/register", {
       method: "POST",
       body: JSON.stringify(Formdata),
       headers: {
         "content-type": "application/json",
       },
     });
+    
     let data = await responce.json();
     console.log(data);
     if (responce.status === 201) {
@@ -60,6 +63,7 @@ const SignUp = () => {
             shadow-lg shadow-indigo-500/40 bg-slate-200 w-[25rem]
             "
             onSubmit={SubmitForm}
+            encType='multipart/form-data'
           >
             <div className="text-end">
               <Link to="/">
@@ -85,6 +89,23 @@ const SignUp = () => {
                 placeholder="Username"
                 onChange={HandleForm}
                 name="username"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-md font-medium mb-1"
+                htmlFor="username"
+              >
+                Profile
+              </label>
+              <input
+                className="appearance-none border   w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-blue-500 focus:border-black"
+                id="username"
+                type="file"
+                placeholder="Username"
+                onChange={HandleForm}
+                name="avatar"
               />
             </div>
             <div className="mb-4">

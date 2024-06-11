@@ -19,9 +19,9 @@ const uploadfileCloudnarry = async (localfilepath) => {
             resource_type: "auto"
         });
         console.log(responce.url)
-        fs.unlinkSync(localfilepath)
+       // fs.unlinkSync(localfilepath)
         return responce
-
+        
     } catch (error) {
         console.log(error)
         fs.unlinkSync(localfilepath);

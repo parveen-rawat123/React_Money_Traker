@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const validate = require("validator");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const secretkey = "your32charactersecretkeygoeshere";
+const jwt = require("jsonwebtoken");
 
 const UserSchema = new Schema({
   username: {
@@ -47,26 +46,38 @@ const UserSchema = new Schema({
 });
 
 UserSchema.pre("save", async function (next) {
-  //  condition if  password not changed only when user changed then it will changed
+
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 12);
-    // for run  code
     next();
   }
 });
 
-UserSchema.methods.generateAuthtoken = async function () {
-  try {
-    const token = jwt.sign({ _id: this._id }, secretkey, {
-      expiresIn: "3d",
-    });
-    this.tokens.push({ token });
-    await this.save();
-    return token;
-  } catch (err) {
-    console.error("Error generating auth token:", err);
-    throw new Error("Could not generate auth token");
-  }
+
+UserSchema.methods.ispasswordMatched = async function (password) {
+  return await bcrypt.compare(password, this.password)
+}
+
+UserSchema.methods.generateAccessToken = function () {
+  jwt.sign({
+    _id: this._id,
+    username: this.username,
+    email: this.email,
+    password: this.password
+  },
+    process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: process.env.ACCESS_TOKEN_EXPIRY
+  })
 };
+
+UserSchema.methods.generateRefreshToken = async function () {
+  jwt.sign({
+    _id: this._id
+  },
+    process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: process.env.REFRESH_TOKEN_EXPIRY
+  }
+  )
+}
 
 module.exports = mongoose.model("User", UserSchema);

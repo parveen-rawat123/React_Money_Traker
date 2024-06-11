@@ -9,13 +9,13 @@ cloudinary.config({
 })
 
 
-const uploadfileCloudnarry = (localfilepath) => {
+const uploadfileCloudnarry = async (localfilepath) => {
     try {
         if (!localfilepath) {
             return null
         }
 
-        const responce = cloudinary.uploader.upload(localfilepath, {
+        const responce = await cloudinary.uploader.upload(localfilepath, {
             resource_type: "auto"
         });
         console.log(responce.url)
@@ -23,6 +23,7 @@ const uploadfileCloudnarry = (localfilepath) => {
         return responce
 
     } catch (error) {
+        console.log(error)
         fs.unlinkSync(localfilepath);
         return null
     }

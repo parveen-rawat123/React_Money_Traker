@@ -25,8 +25,8 @@ const registerUser =  asyncHandler ( async ( req, res )=>{
     if(!alreadyRegister){
      throw new ApiError(401, "User Already Registered")
     }
-    req.file
     
+
     
 })
 

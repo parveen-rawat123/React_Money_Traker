@@ -9,31 +9,29 @@ const SocialSite = [
         id: 1,
         icon: <Person2Icon />,
         link: "https://praveensingh.vercel.app/",
-        color: "blue"
+        
     },
     {
         id: 2,
         icon: <LinkedInIcon />,
         link: "https://www.linkedin.com/in/praveen-singh-8902a4265/",
-        color: "blue"
     },
     {
         id: 3,
         icon: <TwitterIcon />,
         link: "https://x.com/princeR74930066",
-        color: "blue"
+     
     },
     {
         id: 4,
         icon: <GitHubIcon />,
         link: "https://github.com/parveen-rawat123",
-        color: "black"
+  
     },
     {
         id: 5,
         icon: <InstagramIcon />,
         link: "https://www.instagram.com/praveen_rawat477/?igsh=YzljYTk1ODg3Zg%3D%3D",
-        color: "red"
     },
 ];
 
@@ -46,8 +44,7 @@ const SocialSites = () => {
                         href={item.link} 
                         target='_blank' 
                         rel='noopener noreferrer' 
-                        style={{ color: item.color }}
-                        className={`hover:text-${item.color.replace('#', '')}`}
+                        className="hover:text-blue-600"
                     >
                         {item.icon}
                     </a>

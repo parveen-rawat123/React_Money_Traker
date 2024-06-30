@@ -140,7 +140,12 @@ const IncomeItemStyled = styled.div`
         display: flex;
         padding-top: 10px;
         justify-content:flex-end;
+        background-color:none;
+        &:hover{
+          background: none;
+        }
       }
+      
       .content, .text{
         font-size: 1.2rem;
         font-weight: 500;

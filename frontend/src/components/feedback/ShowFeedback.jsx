@@ -37,7 +37,9 @@ const FeedbackStyled = styled.div`
   padding: 50px 0;
   background-color: #d8eef6;
   position: relative;
-
+  h1{
+    color:#1b374c;
+  }
   .main-heading {
     font-size: 2rem;
     font-weight: bold;

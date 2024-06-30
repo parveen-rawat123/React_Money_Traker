@@ -18,7 +18,7 @@ const Footer = () => {
                     <div className=''>
                         <h2 className='text-xl md:text-2xl font-bold text-[#35383a]'>Product</h2>
                         <ul className='font-semibold cursor-pointer text-[#717579] pt-6 flex flex-col gap-4'>
-                            <li className='hover:font-bold hover:text-blue-500'>Features</li>
+                            <li className='hover:font-bold hover:text-blue-500'> <a href="/"> Features</a></li>
                             <li className='hover:font-bold hover:text-blue-500'>FAQ</li>
                             <li className='hover:font-bold hover:text-blue-500'>Blog</li>
                         </ul>

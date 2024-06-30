@@ -52,7 +52,7 @@ const Feedback = () => {
                                 id="feedback"
                                 onChange={HandleForm}
                                 value={Formdata.feedback}
-                                maxLength="300"
+                                maxLength="200"
                                 name="feedback"
                             ></textarea>
                         </div>

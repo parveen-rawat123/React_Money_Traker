@@ -16,7 +16,7 @@ const Footer = () => {
 
                 <div className='flex flex-col md:flex-row gap-8 md:gap-32 lg:gap-24 w-full md:w-2/4 lg:w-auto'>
                     <div className=''>
-                        <h2 className='text-xl md:text-2xl font-bold text-[#5b666d]'>Product</h2>
+                        <h2 className='text-xl md:text-2xl font-bold text-[#35383a]'>Product</h2>
                         <ul className='font-semibold cursor-pointer text-[#717579] pt-6 flex flex-col gap-4'>
                             <li className='hover:font-bold hover:text-blue-500'>Features</li>
                             <li className='hover:font-bold hover:text-blue-500'>FAQ</li>
@@ -25,7 +25,7 @@ const Footer = () => {
                     </div>
 
                     <div className=''>
-                        <h2 className='text-xl md:text-2xl font-bold text-[#5b666d]'>Useful Links</h2>
+                        <h2 className='text-xl md:text-2xl font-bold text-[#35383a]'>Useful Links</h2>
                         <ul className='font-semibold cursor-pointer text-[#717579] pt-6 flex flex-col gap-4'>
                             <li className='hover:font-bold hover:text-blue-500'><a href="/About"> About</a></li>
                             <li className='hover:font-bold hover:text-blue-500'><a href="/GetinTouch"> Contact</a></li>

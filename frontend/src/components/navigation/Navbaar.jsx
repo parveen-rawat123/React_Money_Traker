@@ -106,12 +106,22 @@ export const Navbaar = () => {
                     </a>
                   ))}
                 </div>
-                <div className="py-6">
+
+                <div className="pt-6">
                   <Link
                     to="/LogIn"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Log in
+                  </Link>
+                </div>
+                
+                <div className="">
+                  <Link
+                    to="/SignUp"
+                    className="-mx-3 block rounded-lg  py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Sign in
                   </Link>
                 </div>
               </div>

@@ -44,7 +44,7 @@ const SocialSites = () => {
                         href={item.link} 
                         target='_blank' 
                         rel='noopener noreferrer' 
-                        className="hover:text-blue-600"
+                        className=" text-[#3e3f40d6] hover:text-blue-600"
                     >
                         {item.icon}
                     </a>

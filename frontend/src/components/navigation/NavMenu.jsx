@@ -47,7 +47,7 @@ export default function NavMenu() {
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <p className="font-semibold pr-4 text-md"><Link to={"/GetinTouch"}> Getin Touch </Link></p>
+        <p className="font-semibold pr-4 text-md"><a href="/GetinTouch"> Getin Touch </a></p>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}

@@ -61,9 +61,9 @@ export const Navbaar = () => {
 
           <div className="hidden lg:flex lg:gap-x-16 lg:pl-10">
             {navigation.map((item) => (
-              <Link key={item.id} to={item.href} className="text-md font-semibold leading-6">
+              <a key={item.id} href={item.href} className="text-md font-semibold leading-6">
                 {item.name}
-              </Link>
+              </a>
             ))}
           </div>
 

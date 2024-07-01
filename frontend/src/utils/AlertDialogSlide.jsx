@@ -32,9 +32,9 @@ export default function AlertDialogSlide({ open, onClose }) {
         <DialogTitle>{"Are you sure you want to log out?"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            <p className="font-semibold">
+            <span className="font-semibold">
               You are about to log out of your account. Click Yes, &quot;Log Out&quot; to proceed, or &quot;Cancel&quot; to stay logged in.
-            </p>
+            </span>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

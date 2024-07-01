@@ -14,14 +14,14 @@ const ShowFeedback = () => {
       <h1 className="main-heading paramain">User Feedback</h1>
       <div className="logos-container paramain ">
         <div className="logos-slide">
-          {getFeedbacks.map((item1) => (
-            <div key={item1.id} className="feedback-item">
+          {getFeedbacks.map((item1, index) => (
+            <div key={index} className="feedback-item">
               <h2 className="username">{item1.username}</h2>
               <p className="feedback-text">{item1.feedback}</p>
             </div>
           ))}
-          {getFeedbacks.map((item2) => (
-            <div key={item2.id} className="feedback-item">
+          {getFeedbacks.map((item2, index) => (
+            <div key={index} className="feedback-item">
               <h2 className="username">{item2.username}</h2>
               <p className="feedback-text">{item2.feedback}</p>
             </div>

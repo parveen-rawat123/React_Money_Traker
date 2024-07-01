@@ -38,7 +38,7 @@ const StyledNavLink = styled(NavLink)`
     height: 2px;
     top: 28px;
     left: 0;
-    background-color: #fff;
+    background-color: #2d79e5; 
     transition: width 0.3s;
   }
 

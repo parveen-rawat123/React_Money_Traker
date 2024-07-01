@@ -71,6 +71,7 @@ const IncomeStyled = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     overflow-y: scroll;
+    overflow-x: hidden;
     &::-webkit-scrollbar {
       width: 5px;
     }

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useGlobalContext } from "../context/GlobalContext";
 import Loader from "../../utils/Loader"
+import Aos from "aos";
 
 const SignUp = () => {
   let [Formdata, setFormdata] = useState({});
@@ -11,6 +12,12 @@ const SignUp = () => {
   const { SignUpUser, message, signuploading } = useGlobalContext();
   const navigate = useNavigate()
 
+  useEffect(() => {
+    Aos.init({
+        duration: "1500",
+        delay: 500,
+    });
+}, []);
   if (message) {
     navigate("/")
   }
@@ -52,14 +59,14 @@ const SignUp = () => {
     <>
       <div className="flex flex-col lg:flex-row px-5 pt-5 paramain">
 
-        <div className="hidden lg:flex flex-col gap-2 w-2/5  pt-10 pl-16 ">
+        <div className="hidden lg:flex flex-col gap-2 w-2/5  pt-10 pl-16" data-aos="fade-right">
           <h1 className="text-5xl font-semibold text-blue-500">Create  Account with Money Tracker
           </h1>
           <p className="text-lg font-medium text-[#75838f]">Join and gain access to your personalized financial dashboard. Start tracking your expenses, managing your budget, and uncovering insights into your spending habits. </p>
           <img src="signup.avif" alt="" width={320} />
         </div>
 
-        <div className="md:w-full lg:w-3/5 px-4 md:px-0 pt-2">
+        <div className="md:w-full lg:w-3/5 px-4 md:px-0 pt-2" data-aos="fade-left">
           <form
             className="max-w-sm mx-auto"
             onSubmit={SubmitForm}

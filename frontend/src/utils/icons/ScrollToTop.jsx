@@ -40,7 +40,7 @@ const Toogle = () => {
 const ToogleStyled = styled.div`
         padding: 0.7rem;
         border-radius:0.6rem;
-        background-color: #7ec8e3;
+        background-color: #5ca0b9;
         display: inline-block;
         position: fixed;
         transition: opacity 0.3s ease-in-out;

@@ -1,15 +1,24 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 import Loader from "../../utils/Loader";
+import Aos from "aos";
 
 const LogIn = () => {
   const { loginUser, message, loginloading } = useGlobalContext();
   const navigate = useNavigate();
   const [LogedIn, setLogedIn] = useState();
   const [showpassword, setshowpassword] = useState(false);
+
+  useEffect(() => {
+    Aos.init({
+        duration: "1500",
+        delay: 500,
+    });
+}, []);
+
 
   if (message) {
     navigate("/");
@@ -35,13 +44,15 @@ const LogIn = () => {
 
   return (
     <div className="flex flex-col lg:flex-row p-5 paramain">
-      <div className="hidden lg:flex flex-col gap-2 w-2/5  pt-10 pl-16 ">
+      <div className="hidden lg:flex flex-col gap-2 w-2/5  pt-10 pl-16"
+      data-aos="fade-right"
+      >
         <h1 className="text-5xl font-semibold text-blue-500">Welcome Back to Money Tracker</h1>
         <p className="text-lg font-medium text-[#75838f]">Sign up to your personalized financial dashboard to track expenses, manage your budget, and gain insights into your spending. now to start taking control of your finances.</p>
         <img src="login.avif" alt="" width={320} />
       </div>
 
-      <div className="md:w-full lg:w-3/5 px-4 md:px-0 pt-10">
+      <div className="md:w-full lg:w-3/5 px-4 md:px-0 pt-10" data-aos="fade-left">
         <form className="max-w-sm mx-auto" onSubmit={handlesubmit}>
           <h1 className="text-3xl font-semibold pb-8">Sign in to Expense Tracker</h1>
           

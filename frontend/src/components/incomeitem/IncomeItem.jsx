@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
+import Aos from 'aos';
 import {
   bitcoin,
   book,
@@ -22,6 +23,7 @@ import {
   yt,
 } from "../../utils/icons/Icons";
 import { DateFormat } from "../../utils/DateFormate";
+import { useEffect } from "react";
 
 const IncomeItem = ({
   id,
@@ -76,11 +78,15 @@ const IncomeItem = ({
         return circle;
     }
   };
-
+  useEffect(() => {
+    Aos.init({
+        duration: "1000",
+        delay: 500,
+    });
+}, []);
   return (
     <IncomeItemStyled>
-
-      <div className="box">
+      <div className="box" data-aos="fade-left">
 
         <div className="ruppe">
           <div className="icon">

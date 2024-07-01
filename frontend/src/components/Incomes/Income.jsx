@@ -66,7 +66,7 @@ const IncomeStyled = styled.div`
   }
   .income{
     flex: 1;
-    height: 452px;
+    height: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

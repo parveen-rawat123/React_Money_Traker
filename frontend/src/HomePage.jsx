@@ -15,7 +15,7 @@ const HomePage = () => {
       <Hero />
       <Feature />
       <ShowFeedback />
-    <Faq/>
+       <Faq/>
       <ScrollToTop />
       <Footer />
     </>

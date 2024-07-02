@@ -13,7 +13,7 @@ const Footer = () => {
     }, []);
     return (
         <>
-            <div className='flex flex-col md:flex-row w-full bg-[#f2f9fc] justify-between flex-wrap gap-8 p-8 lg:px-28 lg:py-12'>
+            <div className='flex flex-col md:flex-row w-full bg-[#f2f9fc] justify-between flex-wrap gap-8 p-8 lg:px-28 lg:py-12 overflow-hidden'>
                 <div className='flex flex-col gap-4 w-full md:w-1/3 lg:w-auto text-[#5b666d] cursor-pointer'
                  data-aos="fade-right"
                 >
@@ -27,7 +27,7 @@ const Footer = () => {
                 <div className='flex flex-col md:flex-row gap-8 md:gap-32 lg:gap-24 w-full md:w-2/4 lg:w-auto'
                 data-aos="fade-left"
                 >
-                    <div className=''>
+                    <div className='w-full md:w-auto'>
                         <h2 className='text-xl md:text-2xl font-bold text-[#35383a] cursor-pointer'>Product</h2>
                         <ul className='font-semibold cursor-pointer text-[#717579] pt-6 flex flex-col gap-4'>
                             <li className='hover:font-bold hover:text-blue-500'> <a href="/"> Features</a></li>
@@ -36,7 +36,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className=''>
+                    <div className='w-full md:w-auto'>
                         <h2 className='text-xl md:text-2xl font-bold text-[#35383a] cursor-pointer'>Useful Links</h2>
                         <ul className='font-semibold cursor-pointer text-[#717579] pt-6 flex flex-col gap-4'>
                             <li className='hover:font-bold hover:text-blue-500'><a href="/About"> About</a></li>

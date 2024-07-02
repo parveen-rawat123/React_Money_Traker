@@ -11,5 +11,5 @@ router.route("/register").post(
     , registerUser);
 router.route("/login").post(logInUser);
 router.route("/logout").post(verifyJWT, logoutUser)
-router.route("/forgotpassword").post(  forgotPassword)
+router.route("/forgotpassword").patch(forgotPassword)
 module.exports = router;

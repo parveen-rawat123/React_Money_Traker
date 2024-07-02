@@ -122,21 +122,21 @@ export const GlobalProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
       });
-      
+
       const data = await response.json();
       console.log(data)
       if (response.status === 200) {
         showSnackbar({ message: data.data });
       } else if ([400, 401, 403, 404, 402].includes(response.status)) {
         showSnackbar({ error: data.message });
-      } 
+      }
     } catch (error) {
-      showSnackbar({ error: "internal server error"});
+      showSnackbar({ error: "internal server error" });
     } finally {
-      setchangepassLoading(false); 
+      setchangepassLoading(false);
     }
   };
-  
+
 
   // feedback 
   const Feedback = async (feedback) => {

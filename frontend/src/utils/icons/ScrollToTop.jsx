@@ -41,6 +41,7 @@ const ToogleStyled = styled.div`
         padding: 0.7rem;
         border-radius:0.6rem;
         background-color: #5ca0b9;
+        color: white;
         display: inline-block;
         position: fixed;
         transition: opacity 0.3s ease-in-out;

@@ -12,7 +12,7 @@ const ShowFeedback = () => {
   return (
     <FeedbackStyled>
       <h1 className="main-heading paramain">User Feedback</h1>
-      <div className="logos-container paramain ">
+      <div className="logos-container paramain lg:pt-8">
         <div className="logos-slide">
           {getFeedbacks.map((item1, index) => (
             <div key={index} className="feedback-item">

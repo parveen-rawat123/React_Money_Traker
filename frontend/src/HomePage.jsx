@@ -11,13 +11,13 @@ import Faq from "./components/Faq/Faq"
 const HomePage = () => {
   return (
     <>
+      <Navbaar />
+      <Hero />
+      <Feature />
+      <ShowFeedback />
     <Faq/>
-      {/* <Navbaar /> */}
-      {/* <Hero /> */}
-      {/* <Feature /> */}
-      {/* <ShowFeedback /> */}
-      {/* <ScrollToTop /> */}
-      {/* <Footer /> */}
+      <ScrollToTop />
+      <Footer />
     </>
   );
 };

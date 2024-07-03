@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useContext, useState, createContext } from "react";
 import { useSnackbar } from "./SnackbarContext";
-const AUTH_BASE_URL = "https://react-money-traker.onrender.com/api/v1/user/";
+
+const AUTH_BASE_URL = "http://localhost:3000/api/v1/user/";
+// const AUTH_BASE_URL = "https://react-money-traker.onrender.com/api/v1/user/";
 const TRANSACTION_BASE_URL = "https://react-money-traker.onrender.com/api/v2/transaction/";
 const FEEDBACK_BASE_URL = "https://react-money-traker.onrender.com/api/v3/feedback/"
 const GlobalContext = createContext();

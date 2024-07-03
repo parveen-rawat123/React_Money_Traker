@@ -86,6 +86,7 @@ const SignUp = () => {
                 type="text"
                 onChange={HandleForm}
                 name="username"
+                autoComplete="username"
               />
             </div>
 

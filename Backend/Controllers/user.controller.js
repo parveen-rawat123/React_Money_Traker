@@ -183,9 +183,9 @@ const forgotPassword = asyncHandler(async (req, res) => {
 });
 
 
-const getUserDeatils = asyncHandler(async(req, res)=>{
+// const getUserDeatils = asyncHandler(async(req, res)=>{
 
-});
+// });
 
 
 module.exports = {

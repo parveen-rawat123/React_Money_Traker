@@ -4,7 +4,7 @@ const { verifyJWT } = require("../middlewares/auth.middleware");
 const router = new expense.Router()
 
 
-router.route("/addfeedback").post(verifyJWT,  addFeedback);
+router.route("/addfeedback").post(addFeedback);
 router.route("/getfeedback").get(getFeedback);
 
 module.exports = router; 

@@ -32,17 +32,21 @@ const Navogation = ({ active, setActive, tooglebaar, settooglebaar }) => {
           </div>
         </div> 
         <ul className="menu-items">
-          {menuItems.map((item) => {
-            return (
-              <li key={item.id}
-                onClick={() => setActive(item.id)}
-                className={active === item.id ? "active" : ''}
-              >
-                {item.icon}
-                <span>{item.title}</span>
-              </li>
-            );
-          })}
+        {menuItems.map((item) => {
+  return (
+    <li key={item.id}
+      onClick={() => {
+        setActive(item.id);
+        closesiderbaar(); 
+      }}
+      className={active === item.id ? "active" : ''}
+    >
+      {item.icon}
+      <span>{item.title}</span>
+    </li>
+  );
+})}
+
          <li>
            <Link className="person" to="/LogIn"> <PersonIcon/> LogIn</Link>
           </li>
